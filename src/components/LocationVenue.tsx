@@ -7,9 +7,7 @@ export const LocationVenue: React.FC = () => {
       <div className="container px-3 px-md-4">
         {/* Section Heading */}
         <div className="text-center mb-4 mb-md-5 reveal-on-scroll">
-          <div className="badge-rose mb-2 d-inline-flex align-items-center gap-2">
-            <MapPin size={13} /> The Auspicious Venue <MapPin size={13} />
-          </div>
+          
           <h2 className="font-playfair display-5 mb-2">Venue &amp; Location</h2>
           <div className="ornate-divider">
             <span className="ornate-line"></span>
@@ -84,22 +82,7 @@ export const LocationVenue: React.FC = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-                <div
-                  className="position-absolute bottom-0 start-0 m-2 m-sm-3 p-2 p-sm-3 rounded-3 shadow-lg"
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.95)',
-                    backdropFilter: 'blur(8px)',
-                    maxWidth: '300px',
-                    border: '1px solid #e29578'
-                  }}
-                >
-                  <div className="small fw-bold text-dark d-flex align-items-center gap-1" style={{ fontSize: '0.82rem' }}>
-                    <MapPin size={13} className="text-danger flex-shrink-0" /> GNR Convention Hall Mini
-                  </div>
-                  <div className="text-muted" style={{ fontSize: '0.74rem' }}>
-                    Veeravaram Rd, Kadiam, Andhra Pradesh
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
