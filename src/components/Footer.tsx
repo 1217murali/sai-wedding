@@ -53,7 +53,7 @@ export const Footer: React.FC = () => {
             <Share2 size={13} /> Share Invitation
           </button>
           <a
-            href="tel:+919876543210"
+            href="tel:+919398515968"
             className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 d-inline-flex align-items-center gap-2 text-dark"
             style={{ fontSize: '0.8rem' }}
           >
@@ -64,7 +64,7 @@ export const Footer: React.FC = () => {
         <hr className="my-3 opacity-25 mx-auto" style={{ maxWidth: '500px' }} />
 
         <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 text-muted small" style={{ fontSize: '0.78rem' }}>
-          <div>
+          <div className=''>
             Crafted with <Heart size={13} fill="#e63946" className="text-danger mx-1" /> for Sai &amp; Saraswathi
           </div>
           <button
@@ -72,7 +72,7 @@ export const Footer: React.FC = () => {
             className="btn btn-sm btn-light border rounded-pill px-3 py-1 d-inline-flex align-items-center gap-1 text-dark"
             style={{ fontSize: '0.75rem' }}
           >
-            <span>Back to Top</span>
+            
             <ArrowUp size={13} />
           </button>
         </div>

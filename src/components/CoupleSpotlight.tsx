@@ -20,26 +20,26 @@ export const CoupleSpotlight: React.FC = () => {
           </p>
         </div>
 
-        {/* Groom & Bride Cards */}
+        {/* Groom & Bride Cards with Real Photos */}
         <div className="row g-4 justify-content-center align-items-center mb-3">
           {/* Groom: Sai */}
           <div className="col-12 col-sm-8 col-md-5 col-lg-4 reveal-on-scroll">
             <div className="glass-card-rose text-center p-3 p-md-4 h-100">
               <div
                 className="ornate-img-frame-rose mx-auto mb-3"
-                style={{ maxWidth: '240px', height: '270px' }}
+                style={{ maxWidth: '250px', height: '290px' }}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80"
+                  src="/images/groom.jpg"
                   alt="Sai - The Groom"
                   className="w-100 h-100 rounded-4"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
                 />
               </div>
               <span className="badge-rose">The Groom</span>
               <h3 className="font-playfair fs-3 mt-2 mb-1">Sai</h3>
               <p className="text-secondary small fst-italic px-2 mb-0" style={{ fontSize: '0.84rem' }}>
-                &quot;With every heartbeat, I promise to walk beside you in joy and devotion.&quot;
+                &quot;With every heartbeat, I promise to walk beside you in joy, respect, and devotion.&quot;
               </p>
             </div>
           </div>
@@ -60,19 +60,19 @@ export const CoupleSpotlight: React.FC = () => {
             <div className="glass-card-rose text-center p-3 p-md-4 h-100">
               <div
                 className="ornate-img-frame-rose mx-auto mb-3"
-                style={{ maxWidth: '240px', height: '270px' }}
+                style={{ maxWidth: '250px', height: '290px' }}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80"
+                  src="/images/bride.jpg"
                   alt="Saraswathi - The Bride"
                   className="w-100 h-100 rounded-4"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
                 />
               </div>
               <span className="badge-rose">The Bride</span>
               <h3 className="font-playfair fs-3 mt-2 mb-1">Saraswathi</h3>
               <p className="text-secondary small fst-italic px-2 mb-0" style={{ fontSize: '0.84rem' }}>
-                &quot;In your smile, I see my forever. Here is to our sacred journey together.&quot;
+                &quot;In your smile, I see my home and my forever. Here is to our blessed journey together.&quot;
               </p>
             </div>
           </div>

@@ -11,7 +11,6 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isScratched, setIsScratched] = useState(false);
-  const [scratchPercent, setScratchPercent] = useState(0);
   const [isDrawing, setIsDrawing] = useState(false);
   const lastPointRef = useRef<{ x: number; y: number } | null>(null);
 
@@ -33,7 +32,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
         disableForReducedMotion: true
       });
     } else {
-      // Refined desktop burst (short and non-overwhelming)
+      // Refined desktop burst
       confetti({
         particleCount: 45,
         spread: 60,
@@ -103,7 +102,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
     ctx.strokeRect(15, 15, width - 30, height - 30);
     ctx.setLineDash([]);
 
-    // Elegant text & icon on Rose Gold foil
+    // Text & icon on Rose Gold foil
     ctx.fillStyle = '#4a251e';
     const titleSize = width < 380 ? '17px' : '20px';
     ctx.font = `bold ${titleSize} "Playfair Display", Georgia, serif`;
@@ -139,7 +138,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
     drawCover();
   }, [drawCover]);
 
-  // Calculate scratch percentage
+  // Check scratch percentage
   const checkScratchPercentage = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas || isScratched) return;
@@ -166,7 +165,6 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
     }
 
     const pct = Math.round((transparentCount / totalSamples) * 100);
-    setScratchPercent(pct);
 
     if (pct >= 38 && !isScratched) {
       setIsScratched(true);
@@ -231,7 +229,6 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
     checkScratchPercentage();
   };
 
-  // Touch handlers with e.preventDefault() to prevent page scroll while scratching
   const handleTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => {
     if (e.touches.length > 0) {
       setIsDrawing(true);
@@ -256,7 +253,6 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
 
   const handleReset = () => {
     setIsScratched(false);
-    setScratchPercent(0);
     const canvas = canvasRef.current;
     if (canvas) {
       canvas.style.display = 'block';
@@ -268,7 +264,6 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
   const handleInstantReveal = () => {
     if (isScratched) return;
     setIsScratched(true);
-    setScratchPercent(100);
     const canvas = canvasRef.current;
     if (canvas) {
       canvas.style.transition = 'opacity 0.5s ease';
@@ -282,10 +277,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
 
   return (
     <div className="text-center py-2 py-md-3">
-      <div className="badge-rose mb-3 d-inline-flex align-items-center gap-2">
-        <Sparkles size={13} /> Interactive Scratch Reveal <Sparkles size={13} />
-      </div>
-
+      {/* Clean Header without badge */}
       <h2 className="font-playfair fs-2 mb-2">Scratch To Reveal The Date</h2>
       <p className="text-muted small mx-auto mb-3 mb-md-4 px-2" style={{ maxWidth: '440px' }}>
         Swipe your finger or move your cursor over the card to reveal our sacred wedding date and muhurtham.
@@ -324,7 +316,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
             </div>
             <div className="text-secondary small d-flex align-items-center justify-content-center gap-1" style={{ fontSize: '0.74rem' }}>
               <MapPin size={12} className="text-danger flex-shrink-0" />
-              <span>Kadiam, Andhra Pradesh, India</span>
+              <span>GNR Convention Hall, Kadiam, Andhra Pradesh</span>
             </div>
           </div>
         </div>
@@ -343,32 +335,16 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
         />
       </div>
 
-      {/* Progress & Controls */}
+      {/* Clean Controls (No progress percentage) */}
       <div className="d-flex flex-wrap align-items-center justify-content-center gap-2 gap-sm-3 mt-3 mt-md-4">
         {!isScratched ? (
-          <>
-            <div className="small text-muted d-flex align-items-center gap-2">
-              <span style={{ fontSize: '0.8rem' }}>Progress:</span>
-              <div
-                className="progress"
-                style={{ width: '85px', height: '7px', borderRadius: '10px' }}
-              >
-                <div
-                  className="progress-bar bg-rose-gold progress-bar-striped progress-bar-animated"
-                  role="progressbar"
-                  style={{ width: `${Math.min(100, (scratchPercent / 38) * 100)}%` }}
-                />
-              </div>
-              <span className="fw-bold text-dark" style={{ fontSize: '0.8rem' }}>{scratchPercent}%</span>
-            </div>
-            <button
-              onClick={handleInstantReveal}
-              className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1"
-              style={{ fontSize: '0.75rem' }}
-            >
-              <Sparkles size={12} className="me-1 text-warning" /> Quick Reveal
-            </button>
-          </>
+          <button
+            onClick={handleInstantReveal}
+            className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1"
+            style={{ fontSize: '0.78rem' }}
+          >
+            <Sparkles size={12} className="me-1 text-warning" /> Quick Reveal
+          </button>
         ) : (
           <div className="d-flex flex-wrap gap-2 justify-content-center align-items-center">
             <span className="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 rounded-pill d-inline-flex align-items-center gap-1" style={{ fontSize: '0.75rem' }}>

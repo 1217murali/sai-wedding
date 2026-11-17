@@ -9,38 +9,38 @@ export const PhotoGallery: React.FC = () => {
   const photos: GalleryPhoto[] = [
     {
       id: 1,
-      url: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80',
-      title: 'Golden Sunset Silhouette',
-      category: 'prewedding'
-    },
-    {
-      id: 2,
-      url: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&auto=format&fit=crop&q=80',
-      title: 'Traditional Splendor & Jasmine Garland',
+      url: '/images/marriage.jpg',
+      title: 'Together in Eternal Love',
       category: 'moments'
     },
     {
+      id: 2,
+      url: '/images/traditional.jpg',
+      title: 'Traditional Grace & Elegance',
+      category: 'prewedding'
+    },
+    {
       id: 3,
-      url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&auto=format&fit=crop&q=80',
-      title: 'The Sacred First Look',
+      url: '/images/trade.jpg',
+      title: 'Cherished Traditional Moments',
       category: 'candid'
     },
     {
       id: 4,
-      url: 'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&auto=format&fit=crop&q=80',
-      title: 'Laughter Under The Stars',
+      url: '/images/back pose.jpg',
+      title: 'Walking Hand in Hand into Forever',
       category: 'candid'
     },
     {
       id: 5,
-      url: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&auto=format&fit=crop&q=80',
-      title: 'Walking Hand in Hand',
+      url: '/images/groom.jpg',
+      title: 'Sai - The Groom',
       category: 'prewedding'
     },
     {
       id: 6,
-      url: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&auto=format&fit=crop&q=80',
-      title: 'The Sparkling Ring of Forever',
+      url: '/images/bride.jpg',
+      title: 'Saraswathi - The Bride',
       category: 'moments'
     }
   ];
@@ -112,7 +112,7 @@ export const PhotoGallery: React.FC = () => {
               <div
                 onClick={() => handleOpenLightbox(idx)}
                 className="ornate-img-frame-rose cursor-pointer position-relative overflow-hidden group shadow-sm"
-                style={{ cursor: 'pointer', height: '280px' }}
+                style={{ cursor: 'pointer', height: '290px' }}
               >
                 <img
                   src={photo.url}
@@ -120,6 +120,7 @@ export const PhotoGallery: React.FC = () => {
                   className="w-100 h-100 rounded-3 transition-transform"
                   style={{
                     objectFit: 'cover',
+                    objectPosition: 'center top',
                     transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}

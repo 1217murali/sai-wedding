@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Hourglass, BellRing } from 'lucide-react';
+import { BellRing } from 'lucide-react';
 import { WEDDING_DATE } from '../utils/calendar';
 
 export const CountdownTimer: React.FC = () => {
@@ -70,16 +70,13 @@ export const CountdownTimer: React.FC = () => {
                 ☙
               </div>
 
-              <div className="badge-rose mb-3 d-inline-flex align-items-center gap-2">
-                <Hourglass size={13} /> The Grand Countdown <Hourglass size={13} />
-              </div>
-
+              {/* Clean Title without 'The Grand Countdown' badge */}
               <h2 className="font-playfair fs-2 mb-2">Counting Down To Our Forever</h2>
               <p className="text-muted small mx-auto mb-3 mb-md-4 px-2" style={{ maxWidth: '440px' }}>
                 Every second brings us closer to the sacred moment of our lives. We eagerly await your gracious presence!
               </p>
 
-              {/* Countdown Digits (4 columns, fits 1 row on mobile) */}
+              {/* Countdown Digits (4 columns on a single clean row) */}
               <div className="row g-2 g-sm-3 justify-content-center align-items-center my-3 my-md-4">
                 {/* Days */}
                 <div className="col-3">
