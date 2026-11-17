@@ -73,8 +73,8 @@ export const Hero: React.FC<HeroProps> = ({
             <h1
               className="font-script display-1 my-1 hero-couple-title reveal-on-scroll"
               style={{
-                fontSize: 'clamp(2.8rem, 9vw, 5.5rem)',
-                lineHeight: 1.15
+                fontSize: 'clamp(2.8rem, 8vw, 5.5rem)',
+                
               }}
             >
               Sai <span className="font-serif text-secondary opacity-75" style={{ fontSize: '0.8em' }}>&amp;</span> Saraswathi
