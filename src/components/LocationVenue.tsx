@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Building, Phone } from 'lucide-react';
+import { Building, Phone } from 'lucide-react';
 
 export const LocationVenue: React.FC = () => {
   return (
