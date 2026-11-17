@@ -72,11 +72,11 @@ export const PhotoGallery: React.FC = () => {
   };
 
   return (
-    <section id="gallery" className="py-5 position-relative">
+    <section id="gallery" className="py-4 py-md-5 position-relative">
       <div className="container px-3">
-        <div className="text-center mb-5">
+        <div className="text-center mb-4 mb-md-5 reveal-on-scroll">
           <div className="badge-rose mb-2 d-inline-flex align-items-center gap-2">
-            <Camera size={14} /> Cherished Frames <Camera size={14} />
+            <Camera size={13} /> Cherished Frames <Camera size={13} />
           </div>
           <h2 className="font-playfair display-5 mb-2">Moments of Love</h2>
           <div className="ornate-divider">
@@ -84,19 +84,20 @@ export const PhotoGallery: React.FC = () => {
             <span className="ornate-icon">❦</span>
             <span className="ornate-line"></span>
           </div>
-          <p className="text-muted mx-auto px-2" style={{ maxWidth: '540px' }}>
+          <p className="text-muted mx-auto px-2" style={{ maxWidth: '540px', fontSize: '0.9rem' }}>
             A glimpse into the shared smiles, quiet glances, and cherished moments of Sai &amp; Saraswathi.
           </p>
 
           {/* Category Tabs */}
-          <div className="d-flex flex-wrap justify-content-center gap-2 my-4">
+          <div className="d-flex flex-wrap justify-content-center gap-1 gap-sm-2 my-3">
             {(['all', 'prewedding', 'candid', 'moments'] as const).map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`btn btn-sm rounded-pill px-3 py-2 fw-semibold text-capitalize ${
+                className={`btn btn-sm rounded-pill px-3 py-1 fw-semibold text-capitalize ${
                   activeCategory === cat ? 'btn-rose-gold' : 'btn-outline-rose-gold'
                 }`}
+                style={{ fontSize: '0.78rem' }}
               >
                 {cat === 'all' ? 'All Photos' : cat}
               </button>
@@ -105,13 +106,13 @@ export const PhotoGallery: React.FC = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="row g-4 justify-content-center">
+        <div className="row g-3 g-md-4 justify-content-center">
           {filteredPhotos.map((photo, idx) => (
-            <div key={photo.id} className="col-12 col-sm-6 col-lg-4">
+            <div key={photo.id} className="col-12 col-sm-6 col-lg-4 reveal-on-scroll">
               <div
                 onClick={() => handleOpenLightbox(idx)}
                 className="ornate-img-frame-rose cursor-pointer position-relative overflow-hidden group shadow-sm"
-                style={{ cursor: 'pointer', height: '320px' }}
+                style={{ cursor: 'pointer', height: '280px' }}
               >
                 <img
                   src={photo.url}
@@ -134,7 +135,7 @@ export const PhotoGallery: React.FC = () => {
                   }}
                 >
                   <span className="small fw-semibold">{photo.title}</span>
-                  <Eye size={18} className="text-rose-gold" />
+                  <Eye size={16} className="text-rose-gold" />
                 </div>
               </div>
             </div>
@@ -158,7 +159,7 @@ export const PhotoGallery: React.FC = () => {
               className="btn btn-link text-white position-absolute top-0 end-0 m-3 m-md-4 p-2 text-decoration-none"
               aria-label="Close Lightbox"
             >
-              <X size={32} />
+              <X size={30} />
             </button>
 
             {/* Navigation buttons */}
@@ -167,7 +168,7 @@ export const PhotoGallery: React.FC = () => {
               className="btn btn-rose-gold rounded-circle p-2 position-absolute start-0 ms-2 ms-md-3 shadow-lg"
               aria-label="Previous photo"
             >
-              <ChevronLeft size={26} />
+              <ChevronLeft size={24} />
             </button>
 
             <button
@@ -175,14 +176,14 @@ export const PhotoGallery: React.FC = () => {
               className="btn btn-rose-gold rounded-circle p-2 position-absolute end-0 me-2 me-md-3 shadow-lg"
               aria-label="Next photo"
             >
-              <ChevronRight size={26} />
+              <ChevronRight size={24} />
             </button>
 
             {/* Active Image */}
             <div
               onClick={(e) => e.stopPropagation()}
               className="text-center position-relative"
-              style={{ maxWidth: '88vw', maxHeight: '88vh' }}
+              style={{ maxWidth: '92vw', maxHeight: '88vh' }}
             >
               <img
                 src={filteredPhotos[selectedPhotoIndex].url}

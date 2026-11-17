@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
-import { Sparkles, Heart } from 'lucide-react';
+import { Sparkles, Heart, ArrowRight, X } from 'lucide-react';
 import { weddingAudio } from '../utils/audio';
 
 interface GrandCardRevealProps {
@@ -8,150 +8,196 @@ interface GrandCardRevealProps {
 }
 
 export const GrandCardReveal: React.FC<GrandCardRevealProps> = ({ onOpenComplete }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpening, setIsOpening] = useState(false);
+  // Phase: 'cover' (outer sealed card) -> 'unfolded' (inside letter revealed) -> 'exiting' (fade out)
+  const [phase, setPhase] = useState<'cover' | 'unfolded' | 'exiting'>('cover');
 
-  const handleOpenCard = () => {
-    if (isOpening || isOpen) return;
-    setIsOpening(true);
+  const handleOpenEnvelope = () => {
+    if (phase !== 'cover') return;
 
-    // Audio chime
+    // Play celebration audio chime
     weddingAudio.playCelebrationChime();
 
-    // Trigger double blast of rose gold & golden petal confetti
+    // Delicate celebratory sprinkle
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     confetti({
-      particleCount: 80,
-      spread: 70,
-      origin: { y: 0.55 },
-      colors: ['#E29578', '#F7D6CB', '#C48B79', '#D4AF37', '#FFFFFF']
+      particleCount: isMobile ? 28 : 50,
+      spread: isMobile ? 50 : 70,
+      origin: { y: 0.5 },
+      colors: ['#E29578', '#F7D6CB', '#D4AF37', '#FFFFFF', '#F8C8DC'],
+      disableForReducedMotion: true
     });
 
-    setTimeout(() => {
-      confetti({
-        particleCount: 60,
-        angle: 60,
-        spread: 60,
-        origin: { x: 0.1, y: 0.6 },
-        colors: ['#E29578', '#F8C8DC', '#D4AF37']
-      });
-      confetti({
-        particleCount: 60,
-        angle: 120,
-        spread: 60,
-        origin: { x: 0.9, y: 0.6 },
-        colors: ['#E29578', '#F8C8DC', '#D4AF37']
-      });
-    }, 350);
+    setPhase('unfolded');
+  };
 
-    // Transition after 3D card unfolds
+  const handleEnterWebsite = () => {
+    setPhase('exiting');
     setTimeout(() => {
-      setIsOpen(true);
-      setTimeout(() => {
-        onOpenComplete();
-      }, 700);
-    }, 1200);
+      onOpenComplete();
+    }, 600);
   };
 
   return (
     <div
-      className={`card-reveal-overlay ${isOpen ? 'card-reveal-fade-out' : ''}`}
-      aria-modal="true"
+      className={`fullscreen-card-overlay ${phase === 'exiting' ? 'fade-out-overlay' : ''}`}
       role="dialog"
+      aria-modal="true"
     >
-      {/* Background ambient glow */}
-      <div className="card-reveal-backdrop" />
+      {/* Background ambient lighting */}
+      <div className="card-ambient-bg" />
 
-      {/* Floating Sparkles in the backdrop */}
-      <div className="card-reveal-sparkles">
-        <span className="sparkle-dot dot-1" />
-        <span className="sparkle-dot dot-2" />
-        <span className="sparkle-dot dot-3" />
-        <span className="sparkle-dot dot-4" />
-      </div>
+      {/* Discrete skip button */}
+      <button
+        onClick={handleEnterWebsite}
+        className="btn-skip-invitation"
+        aria-label="Skip to website"
+      >
+        <span>Skip to site</span>
+        <X size={14} />
+      </button>
 
-      <div className="envelope-scene">
-        {/* 3D Royal Envelope Container */}
-        <div
-          className={`royal-envelope ${isOpening ? 'envelope-open' : ''}`}
-          onClick={handleOpenCard}
-        >
-          {/* Top Flap with 3D Fold */}
-          <div className="envelope-flap" />
+      {/* ========================================================
+          PHASE 1: OUTER ENVELOPE / ROYAL COVER (FULL SCREEN)
+          ======================================================== */}
+      {phase === 'cover' && (
+        <div className="outer-cover-container" onClick={handleOpenEnvelope}>
+          {/* Ornate Indian Toran / Arch at Top */}
+          <div className="royal-arch-decoration">
+            <span className="arch-flourish">❦ ❧</span>
+          </div>
 
-          {/* Envelope Pocket Front */}
-          <div className="envelope-pocket">
-            {/* Ornate Indian Floral Border Filigree */}
-            <div className="pocket-filigree-border" />
-
+          <div className="cover-inner-content">
             {/* Sacred Invocation */}
-            <div className="sacred-invocation">
-              <span>॥ శ్రీ విఘ్నేశ్వరాయ నమః ॥</span>
-              <div className="small-latin">Śrī Gaṇēśāya Namaḥ</div>
+            <div className="telugu-invocation">
+              <span className="telugu-text">॥ శ్రీ విఘ్నేశ్వరాయ నమః ॥</span>
+              <span className="latin-sub">Śrī Gaṇēśāya Namaḥ</span>
             </div>
 
-            {/* Couple Monogram on Envelope */}
-            <div className="envelope-header-text">
-              <div className="envelope-invitation-tag">Royal Wedding Invitation</div>
-              <h2 className="envelope-names">Sai &amp; Saraswathi</h2>
-              <div className="envelope-date-location">
-                <span>13th December 2026</span>
-                <span className="dot-sep">•</span>
-                <span>Kadiam, India</span>
+            {/* Monogram Badge */}
+            <div className="royal-cover-monogram">
+              <span className="monogram-text">S &amp; S</span>
+            </div>
+
+            <p className="cover-invitation-subtitle">Royal Wedding Invitation</p>
+
+            <h1 className="cover-couple-names">
+              Sai <span className="cover-amp">&amp;</span> Saraswathi
+            </h1>
+
+            <div className="cover-meta-badge">
+              <span>Sunday, 13th December 2026</span>
+              <span className="meta-sep">•</span>
+              <span>Kadiam, Andhra Pradesh</span>
+            </div>
+
+            {/* Shimmering Silk Ribbon Sash */}
+            <div className="cover-silk-ribbon">
+              <div className="ribbon-line" />
+            </div>
+
+            {/* 3D Wax Seal with pulsating touch glow */}
+            <div className="cover-wax-seal-wrapper">
+              <div className="wax-seal-glow-ring" />
+              <button
+                type="button"
+                className="cover-wax-seal"
+                aria-label="Tap to open wedding invitation"
+              >
+                <div className="wax-seal-ring">
+                  <span className="wax-seal-monogram">S &amp; S</span>
+                  <Heart size={10} fill="#fcedc5" className="wax-seal-heart" />
+                </div>
+              </button>
+            </div>
+
+            {/* Touch to Open CTA */}
+            <div className="cover-tap-cta">
+              <div className="tap-cta-bubble">
+                <Sparkles size={14} className="text-warning animate-bounce" />
+                <span>Tap Seal to Open Wedding Card</span>
+                <Sparkles size={14} className="text-warning animate-bounce" />
               </div>
             </div>
+          </div>
+        </div>
+      )}
 
-            {/* Silk Ribbon */}
-            <div className="envelope-ribbon">
-              <div className="ribbon-shine" />
-            </div>
+      {/* ========================================================
+          PHASE 2: UNFOLDED ROYAL WEDDING CARD / LETTER (FULL SCREEN)
+          ======================================================== */}
+      {phase === 'unfolded' && (
+        <div className="unfolded-card-container">
+          <div className="unfolded-scroll-wrapper">
+            <div className="royal-letter-sheet">
+              {/* Ornate corner borders */}
+              <div className="letter-corner corner-tl">❧</div>
+              <div className="letter-corner corner-tr">❧</div>
+              <div className="letter-corner corner-bl">❧</div>
+              <div className="letter-corner corner-br">❧</div>
 
-            {/* 3D Wax Seal with S & S monogram */}
-            <div className={`royal-wax-seal ${isOpening ? 'seal-break' : 'seal-pulse'}`}>
-              <div className="seal-ring">
-                <div className="seal-inner">
-                  <span className="seal-monogram">S &amp; S</span>
-                  <Heart size={10} fill="#fcedc5" className="seal-heart" />
+              {/* Inner content */}
+              <div className="letter-body text-center">
+                {/* Traditional Telugu Shloka */}
+                <div className="sacred-shloka">
+                  <div className="shloka-main">
+                    ॥ కల్యాణాద్భుతగాత్రాయ కామితార్థప్రదాయినే ।<br />
+                    శ్రీమద్వేంకటనాథాయ శ్రీనివాసాయ తే నమః ॥
+                  </div>
+                  <div className="shloka-sub">
+                    With the divine blessings of Lord Venkateswara &amp; our respected elders
+                  </div>
+                </div>
+
+                <div className="letter-invitation-lead">
+                  Together with their families, cordially invite you to celebrate the holy matrimony of
+                </div>
+
+                {/* Couple Names */}
+                <h2 className="letter-couple-names">
+                  Sai <span className="amp">&amp;</span> Saraswathi
+                </h2>
+
+                <div className="letter-ornament-divider">
+                  <span className="line" />
+                  <span className="icon">❦</span>
+                  <span className="line" />
+                </div>
+
+                {/* Sacred Muhurtham Card */}
+                <div className="letter-date-box">
+                  <div className="date-label">Auspicious Sumuhurtham</div>
+                  <div className="date-value">Sunday, 13th December 2026</div>
+                  <div className="time-value">Night 8:15 PM Onwards</div>
+                </div>
+
+                {/* Venue Details */}
+                <div className="letter-venue-box">
+                  <div className="venue-title">Sri Venkateswara Royal Convention</div>
+                  <div className="venue-desc">
+                    Main Road, Garden Lawns, Kadiam<br />
+                    East Godavari District, Andhra Pradesh 533126
+                  </div>
+                </div>
+
+                <p className="letter-closing-note">
+                  &quot;Your gracious presence, warm prayers, and heartfelt blessings are the greatest gifts as we embark on this sacred journey of togetherness.&quot;
+                </p>
+
+                {/* Primary Button to enter website */}
+                <div className="letter-action-container">
+                  <button
+                    onClick={handleEnterWebsite}
+                    className="btn btn-enter-celebration"
+                  >
+                    <span>Enter Wedding Celebration</span>
+                    <ArrowRight size={16} />
+                  </button>
                 </div>
               </div>
             </div>
-
-            {/* Tap to open hint */}
-            <div className="envelope-tap-cta">
-              <div className="cta-pill">
-                <Sparkles size={14} className="text-warning animate-bounce" />
-                <span>Tap Seal To Open Invitation</span>
-                <Sparkles size={14} className="text-warning animate-bounce" />
-              </div>
-            </div>
-          </div>
-
-          {/* Letter / Card sliding up from inside */}
-          <div className="inner-wedding-card">
-            <div className="inner-card-border">
-              <div className="inner-card-monogram">S &amp; S</div>
-              <div className="inner-card-sub">Together With Their Families</div>
-              <h3 className="inner-card-title">Sai &amp; Saraswathi</h3>
-              <p className="inner-card-desc">
-                Request the pleasure of your gracious company at their wedding ceremony
-              </p>
-              <div className="inner-card-date">Sunday, 13th December 2026</div>
-              <div className="inner-card-time">Sumuhurtham: Night 8:15 PM Onwards</div>
-              <div className="inner-card-venue">Kadiam, Andhra Pradesh</div>
-            </div>
           </div>
         </div>
-
-        {/* Quick Skip Button for accessibility */}
-        <div className="text-center mt-4">
-          <button
-            onClick={onOpenComplete}
-            className="btn btn-sm btn-link text-white-50 text-decoration-none small"
-            style={{ fontSize: '0.8rem', letterSpacing: '1px' }}
-          >
-            Skip directly to website &rarr;
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -9,10 +9,10 @@
   --rose-burgundy: #5A1E27;
   --rose-text-dark: #2B1D19;
   --rose-text-muted: #6B5550;
-  --rose-card-bg: rgba(255, 255, 255, 0.90);
-  --rose-card-border: rgba(226, 149, 120, 0.40);
-  --rose-shadow: 0 15px 35px rgba(226, 149, 120, 0.18), 0 5px 15px rgba(0, 0, 0, 0.04);
-  --rose-glow: 0 0 28px rgba(226, 149, 120, 0.45);
+  --rose-card-bg: rgba(255, 255, 255, 0.92);
+  --rose-card-border: rgba(226, 149, 120, 0.38);
+  --rose-shadow: 0 15px 35px rgba(226, 149, 120, 0.16), 0 5px 15px rgba(0, 0, 0, 0.04);
+  --rose-glow: 0 0 25px rgba(226, 149, 120, 0.4);
 }
 
 /* Base Body Styling */
@@ -28,20 +28,20 @@ body {
   background-attachment: fixed;
   overflow-x: hidden;
   position: relative;
-  line-height: 1.7;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
   background: #fdf5f2;
 }
 ::-webkit-scrollbar-thumb {
   background: #e29578;
-  border-radius: 5px;
+  border-radius: 4px;
   border: 2px solid #fdf5f2;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -91,11 +91,11 @@ body {
   background: rgba(226, 149, 120, 0.16);
   color: #8c4e40;
   border: 1px solid rgba(226, 149, 120, 0.45);
-  padding: 6px 14px;
+  padding: 5px 14px;
   border-radius: 30px;
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
 }
 
@@ -105,13 +105,13 @@ body {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--rose-card-border);
-  border-radius: 22px;
+  border-radius: 20px;
   box-shadow: var(--rose-shadow);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
 .glass-card-rose:hover {
-  border-color: rgba(226, 149, 120, 0.7);
+  border-color: rgba(226, 149, 120, 0.65);
   box-shadow: var(--rose-shadow), var(--rose-glow);
 }
 
@@ -122,10 +122,10 @@ body {
   font-weight: 600;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   border: none;
   border-radius: 50px;
-  padding: 12px 28px;
+  padding: 11px 24px;
   box-shadow: 0 4px 16px rgba(226, 149, 120, 0.35);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
@@ -134,12 +134,8 @@ body {
 
 .btn-rose-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 7px 22px rgba(226, 149, 120, 0.5);
+  box-shadow: 0 7px 20px rgba(226, 149, 120, 0.5);
   color: #170b08 !important;
-}
-
-.btn-rose-gold:active {
-  transform: translateY(0);
 }
 
 .btn-outline-rose-gold {
@@ -147,11 +143,11 @@ body {
   color: var(--rose-gold-dark) !important;
   border: 1.5px solid var(--rose-gold-primary);
   border-radius: 50px;
-  padding: 11px 26px;
+  padding: 10px 22px;
   font-weight: 600;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   transition: all 0.3s ease;
 }
 
@@ -167,8 +163,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 22px auto;
-  max-width: 320px;
+  margin: 18px auto;
+  max-width: 280px;
 }
 
 .ornate-line {
@@ -178,15 +174,15 @@ body {
 }
 
 .ornate-icon {
-  margin: 0 15px;
+  margin: 0 12px;
   color: var(--rose-gold-primary);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
 }
 
 /* Animations */
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(1deg); }
+  50% { transform: translateY(-7px) rotate(1deg); }
 }
 
 .animate-float {
@@ -195,10 +191,10 @@ body {
 
 @keyframes pulseGlowRose {
   0%, 100% {
-    box-shadow: 0 0 16px rgba(226, 149, 120, 0.3), 0 10px 30px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0 14px rgba(226, 149, 120, 0.3), 0 8px 25px rgba(0, 0, 0, 0.05);
   }
   50% {
-    box-shadow: 0 0 32px rgba(226, 149, 120, 0.65), 0 15px 42px rgba(226, 149, 120, 0.3);
+    box-shadow: 0 0 28px rgba(226, 149, 120, 0.6), 0 12px 35px rgba(226, 149, 120, 0.28);
   }
 }
 
@@ -206,16 +202,31 @@ body {
   animation: pulseGlowRose 3s ease-in-out infinite;
 }
 
+/* ===================================================
+   SCROLL REVEAL ANIMATIONS (Item requested: content appears slowly on scroll)
+   =================================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Scratch Box */
 .scratch-box {
   position: relative;
   width: 100%;
   max-width: 440px;
-  height: 250px;
+  height: 240px;
   margin: 0 auto;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(226, 149, 120, 0.28), 0 5px 15px rgba(0,0,0,0.06);
+  box-shadow: 0 15px 35px rgba(226, 149, 120, 0.25), 0 5px 15px rgba(0,0,0,0.06);
   border: 3px solid #e29578;
   user-select: none;
   -webkit-user-select: none;
@@ -249,7 +260,7 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #fff7f4 0%, #ffffff 50%, #fef1ed 100%);
-  padding: 18px;
+  padding: 16px;
   text-align: center;
 }
 
@@ -257,10 +268,10 @@ body {
 .countdown-digit-box-rose {
   background: linear-gradient(180deg, #ffffff 0%, #fdf5f2 100%);
   border: 1.5px solid rgba(226, 149, 120, 0.45);
-  border-radius: 16px;
-  padding: 16px 12px;
-  min-width: 80px;
-  box-shadow: 0 8px 20px rgba(226, 149, 120, 0.15);
+  border-radius: 14px;
+  padding: 12px 6px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(226, 149, 120, 0.12);
   position: relative;
   overflow: hidden;
 }
@@ -272,34 +283,34 @@ body {
   left: 0;
   right: 0;
   height: 1px;
-  background: rgba(226, 149, 120, 0.3);
+  background: rgba(226, 149, 120, 0.25);
 }
 
 .countdown-digit {
   font-family: 'Cinzel Decorative', 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  font-size: clamp(1.4rem, 4.5vw, 2.2rem);
   font-weight: 700;
   line-height: 1.1;
   color: #3b241e;
 }
 
 .countdown-label {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   color: #8c594d;
   font-weight: 600;
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
-/* Frame styles */
+/* Image frames */
 .ornate-img-frame-rose {
   position: relative;
-  padding: 10px;
+  padding: 8px;
   background: #ffffff;
   border: 1px solid rgba(226, 149, 120, 0.4);
   box-shadow: var(--rose-shadow);
-  border-radius: 20px;
+  border-radius: 18px;
 }
 
 .ornate-img-frame-rose::before {
@@ -310,7 +321,7 @@ body {
   right: 4px;
   bottom: 4px;
   border: 1px dashed rgba(226, 149, 120, 0.45);
-  border-radius: 16px;
+  border-radius: 14px;
   pointer-events: none;
 }
 
@@ -326,423 +337,511 @@ body {
 }
 
 /* ===================================================
-   GRAND OPENING WEDDING CARD REVEAL CSS (Item 14 & 15)
+   FULLSCREEN ROYAL WEDDING CARD REVEAL (100% Screen Immersive)
    =================================================== */
 
-.card-reveal-overlay {
+.fullscreen-card-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.7s ease;
 }
 
-.card-reveal-fade-out {
+.fullscreen-card-overlay.fade-out-overlay {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-.card-reveal-backdrop {
+.card-ambient-bg {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, #2e1215 0%, #1a080a 60%, #0d0304 100%);
+  background: radial-gradient(circle at center, #351319 0%, #20080d 50%, #0d0205 100%);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
 
-.card-reveal-sparkles {
+.btn-skip-invitation {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.sparkle-dot {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: #fcedea;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #e29578;
-  animation: pulseGlowRose 2s infinite alternate;
-}
-.dot-1 { top: 20%; left: 15%; animation-delay: 0.2s; }
-.dot-2 { top: 75%; left: 20%; animation-delay: 0.7s; }
-.dot-3 { top: 25%; right: 18%; animation-delay: 0.4s; }
-.dot-4 { top: 80%; right: 15%; animation-delay: 0.9s; }
-
-.envelope-scene {
-  position: relative;
-  z-index: 2;
-  perspective: 1400px;
-  width: 90%;
-  max-width: 480px;
-}
-
-/* Royal Envelope */
-.royal-envelope {
-  position: relative;
-  width: 100%;
-  height: 320px;
-  background: linear-gradient(135deg, #fdf6f3 0%, #f7ded6 50%, #edd0c6 100%);
-  border-radius: 18px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(226, 149, 120, 0.4);
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(226, 149, 120, 0.4);
+  color: #fcedea;
+  border-radius: 30px;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   cursor: pointer;
-  border: 2px solid #e29578;
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
 }
 
-.royal-envelope:hover {
-  transform: translateY(-5px) scale(1.01);
+.btn-skip-invitation:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
 }
 
-/* Top Flap */
-.envelope-flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  border-left: 240px solid transparent;
-  border-right: 240px solid transparent;
-  border-top: 150px solid #e8bcad;
-  transform-origin: top;
-  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+/* ---------------------------------------------------
+   Phase 1: Outer Envelope Cover
+   --------------------------------------------------- */
+.outer-cover-container {
+  position: relative;
   z-index: 5;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.18));
-}
-
-@media (max-width: 520px) {
-  .envelope-flap {
-    border-left-width: 45vw;
-    border-right-width: 45vw;
-    border-top-width: 125px;
-  }
-}
-
-.envelope-open .envelope-flap {
-  transform: rotateX(180deg);
-  z-index: 1;
-}
-
-/* Pocket Front */
-.envelope-pocket {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 16px;
-  padding: 24px 20px;
+  max-width: 500px;
+  max-height: 850px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  z-index: 4;
+  padding: 30px 20px 25px;
+  cursor: pointer;
+  user-select: none;
+  animation: float 6s ease-in-out infinite;
 }
 
-.pocket-filigree-border {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  border: 1px dashed rgba(140, 78, 64, 0.45);
-  border-radius: 12px;
-  pointer-events: none;
+.royal-arch-decoration {
+  color: #e29578;
+  font-size: 1.5rem;
+  letter-spacing: 6px;
+  opacity: 0.85;
 }
 
-.sacred-invocation {
+.cover-inner-content {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(253, 246, 243, 0.96) 0%, rgba(247, 222, 214, 0.95) 50%, rgba(237, 208, 198, 0.95) 100%);
+  border-radius: 24px;
+  border: 2px solid #e29578;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 35px rgba(226, 149, 120, 0.35);
+  padding: 28px 20px 22px;
   text-align: center;
-  color: #7a3e32;
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
 }
 
-.sacred-invocation .small-latin {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: #9c5c4e;
+.telugu-invocation {
+  margin-bottom: 12px;
+}
+.telugu-invocation .telugu-text {
+  display: block;
+  font-weight: 700;
+  color: #7a3e32;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
+.telugu-invocation .latin-sub {
+  display: block;
+  font-size: 0.7rem;
   letter-spacing: 2px;
+  color: #9c5c4e;
   text-transform: uppercase;
+  font-weight: 600;
   margin-top: 2px;
 }
 
-.envelope-header-text {
-  text-align: center;
-  margin-top: 10px;
+.royal-cover-monogram {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fffaf7, #fae3dc);
+  border: 1.5px solid #e29578;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(226, 149, 120, 0.3);
+}
+.royal-cover-monogram .monogram-text {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #8c4e40;
 }
 
-.envelope-invitation-tag {
-  font-size: 0.75rem;
+.cover-invitation-subtitle {
+  font-size: 0.72rem;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #8c4e40;
-  font-weight: 600;
+  font-weight: 700;
+  margin-bottom: 2px;
 }
 
-.envelope-names {
+.cover-couple-names {
   font-family: 'Great Vibes', cursive;
-  font-size: 2.8rem;
-  color: #3d1b15;
-  margin: 4px 0;
-  line-height: 1.1;
+  font-size: clamp(2.4rem, 8vw, 3.2rem);
+  color: #3b1913;
+  margin: 2px 0 6px;
+  line-height: 1.15;
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
 }
+.cover-couple-names .cover-amp {
+  color: #c48b79;
+}
 
-.envelope-date-location {
-  font-size: 0.8rem;
+.cover-meta-badge {
+  font-size: 0.78rem;
   color: #633329;
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  flex-wrap: wrap;
 }
-
-.dot-sep {
+.cover-meta-badge .meta-sep {
   color: #e29578;
 }
 
-/* Silk Ribbon */
-.envelope-ribbon {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 28px;
-  transform: translateY(-50%);
+.cover-silk-ribbon {
+  margin: 18px -20px;
+  height: 22px;
   background: linear-gradient(90deg, #c48b79 0%, #fcedea 40%, #e29578 70%, #a86c5c 100%);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
 }
 
-/* Wax Seal */
-.royal-wax-seal {
+/* Wax Seal on Cover */
+.cover-wax-seal-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 4px 0 14px;
+}
+
+.wax-seal-glow-ring {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 68px;
-  height: 68px;
+  width: 82px;
+  height: 82px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #9e3d48 0%, #681f28 70%, #400f15 100%);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), 0 0 16px rgba(226, 149, 120, 0.5);
-  border: 2px solid #e09f8d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 6;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
-}
-
-.seal-ring {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(252, 237, 197, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.seal-inner {
-  text-align: center;
-}
-
-.seal-monogram {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 0.85rem;
-  font-weight: 900;
-  color: #fcedc5;
-  letter-spacing: 1px;
-  display: block;
-  line-height: 1;
-}
-
-.seal-pulse {
-  animation: pulseGlowRose 2.2s infinite ease-in-out;
-}
-
-.seal-break {
-  transform: translate(-50%, -50%) scale(1.35);
-  opacity: 0;
-}
-
-/* Tap to Open CTA */
-.envelope-tap-cta {
-  margin-top: 10px;
-}
-
-.cta-pill {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #e29578;
-  color: #4a2118;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-/* Inner Wedding Card Sliding Out */
-.inner-wedding-card {
-  position: absolute;
-  top: 15px;
-  left: 20px;
-  right: 20px;
-  bottom: 15px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  padding: 20px;
-  text-align: center;
-  z-index: 2;
-  transform: translateY(0);
-  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 1.1s ease;
+  border: 2px solid rgba(226, 149, 120, 0.6);
+  animation: pulseGlowRose 2s infinite ease-in-out;
   pointer-events: none;
 }
 
-.envelope-open .inner-wedding-card {
-  transform: translateY(-80px) translateZ(40px) scale(1.03);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+.cover-wax-seal {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #a13d49 0%, #6d1f28 70%, #440f16 100%);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), 0 0 18px rgba(226, 149, 120, 0.5);
+  border: 2.5px solid #e29578;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.inner-card-border {
-  border: 1px solid rgba(226, 149, 120, 0.4);
-  padding: 16px;
-  height: 100%;
-  border-radius: 8px;
+.cover-wax-seal:hover {
+  transform: scale(1.06);
+}
+
+.wax-seal-ring {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(252, 237, 197, 0.7);
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
-.inner-card-monogram {
+.wax-seal-monogram {
   font-family: 'Cinzel Decorative', serif;
-  font-size: 1.1rem;
-  color: #c48b79;
-  font-weight: 700;
+  font-size: 0.92rem;
+  font-weight: 900;
+  color: #fcedc5;
+  letter-spacing: 1px;
+  line-height: 1;
 }
 
-.inner-card-sub {
+.wax-seal-heart {
+  margin-top: 3px;
+}
+
+.cover-tap-cta {
+  display: flex;
+  justify-content: center;
+}
+
+.tap-cta-bubble {
+  background: #ffffff;
+  border: 1.5px solid #e29578;
+  color: #4a2118;
+  padding: 7px 18px;
+  border-radius: 30px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------------------------------------------------
+   Phase 2: Unfolded Royal Wedding Letter (Inside)
+   --------------------------------------------------- */
+.unfolded-card-container {
+  position: relative;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 15px;
+  animation: cardFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.93) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.unfolded-scroll-wrapper {
+  width: 100%;
+  max-width: 520px;
+  max-height: 92vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 20px;
+}
+
+.royal-letter-sheet {
+  background: linear-gradient(135deg, #ffffff 0%, #fffbf8 50%, #fdf5f2 100%);
+  border: 2px solid #e29578;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(226, 149, 120, 0.3);
+  padding: 28px 20px 24px;
+  position: relative;
+}
+
+/* Letter corner filigrees */
+.letter-corner {
+  position: absolute;
+  color: #e29578;
+  font-size: 1.15rem;
+  opacity: 0.7;
+}
+.corner-tl { top: 8px; left: 10px; }
+.corner-tr { top: 8px; right: 10px; transform: scaleX(-1); }
+.corner-bl { bottom: 8px; left: 10px; transform: scaleY(-1); }
+.corner-br { bottom: 8px; right: 10px; transform: scale(-1); }
+
+.sacred-shloka {
+  margin-bottom: 12px;
+}
+.sacred-shloka .shloka-main {
+  font-weight: 700;
+  color: #6d2d22;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.sacred-shloka .shloka-sub {
   font-size: 0.68rem;
-  letter-spacing: 2px;
+  letter-spacing: 1.2px;
+  color: #8c5246;
   text-transform: uppercase;
-  color: #7d4d42;
+  font-weight: 600;
   margin-top: 4px;
 }
 
-.inner-card-title {
+.letter-invitation-lead {
+  font-size: 0.75rem;
+  color: #70473e;
+  line-height: 1.4;
+  margin: 10px auto;
+  max-width: 400px;
+}
+
+.letter-couple-names {
   font-family: 'Great Vibes', cursive;
-  font-size: 2.2rem;
-  color: #401812;
-  margin: 4px 0;
+  font-size: clamp(2.6rem, 9vw, 3.5rem);
+  color: #3b1913;
+  margin: 4px 0 8px;
+  line-height: 1.1;
+}
+.letter-couple-names .amp {
+  color: #e29578;
 }
 
-.inner-card-desc {
-  font-size: 0.72rem;
-  color: #6e473e;
-  margin-bottom: 8px;
+.letter-ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto 14px;
+  max-width: 220px;
+}
+.letter-ornament-divider .line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e29578, transparent);
+}
+.letter-ornament-divider .icon {
+  margin: 0 10px;
+  color: #e29578;
+  font-size: 1rem;
 }
 
-.inner-card-date {
+.letter-date-box {
+  background: #fff8f5;
+  border: 1px solid rgba(226, 149, 120, 0.4);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin: 10px auto;
+  max-width: 380px;
+}
+.letter-date-box .date-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #8c4e40;
+  font-weight: 700;
+}
+.letter-date-box .date-value {
   font-family: 'Cinzel Decorative', serif;
   font-weight: 700;
-  font-size: 0.95rem;
-  color: #8c4e40;
+  font-size: 1rem;
+  color: #2b1712;
+  margin: 2px 0;
 }
-
-.inner-card-time {
-  font-size: 0.75rem;
-  color: #59352e;
+.letter-date-box .time-value {
+  font-size: 0.8rem;
+  color: #8c4e40;
   font-weight: 600;
 }
 
-.inner-card-venue {
-  font-size: 0.72rem;
-  color: #7d4d42;
+.letter-venue-box {
+  margin: 12px auto;
+  max-width: 380px;
+}
+.letter-venue-box .venue-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #2b1712;
+}
+.letter-venue-box .venue-desc {
+  font-size: 0.75rem;
+  color: #6e473e;
+  line-height: 1.4;
   margin-top: 2px;
 }
 
+.letter-closing-note {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #7d4d42;
+  margin: 12px auto 16px;
+  max-width: 400px;
+  line-height: 1.4;
+}
+
+.letter-action-container {
+  margin-top: 10px;
+}
+
+.btn-enter-celebration {
+  background: var(--rose-gold-gradient);
+  color: #2b1712 !important;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 28px;
+  box-shadow: 0 4px 18px rgba(226, 149, 120, 0.45);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-enter-celebration:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 22px rgba(226, 149, 120, 0.6);
+}
+
 /* ===================================================
-   MOBILE RESPONSIVENESS (Item 13)
+   MOBILE RESPONSIVENESS OVERRIDES (Item 13)
    =================================================== */
 
-@media (max-width: 768px) {
-  .hero-section {
-    padding-top: 30px !important;
-    padding-bottom: 30px !important;
+@media (max-width: 480px) {
+  .outer-cover-container {
+    padding: 20px 12px 15px;
   }
 
-  .countdown-digit {
-    font-size: 1.7rem;
+  .cover-inner-content {
+    padding: 20px 14px 18px;
   }
 
-  .countdown-digit-box-rose {
-    min-width: 66px;
-    padding: 12px 6px;
+  .cover-couple-names {
+    font-size: 2.35rem;
+  }
+
+  .cover-wax-seal {
+    width: 65px;
+    height: 65px;
+  }
+  .wax-seal-glow-ring {
+    width: 75px;
+    height: 75px;
+  }
+
+  .royal-letter-sheet {
+    padding: 22px 14px 18px;
+  }
+
+  .letter-couple-names {
+    font-size: 2.45rem;
+  }
+
+  .btn-enter-celebration {
+    padding: 11px 20px;
+    font-size: 0.76rem;
+    width: 100%;
+    justify-content: center;
   }
 
   .scratch-box {
-    height: 230px;
+    height: 220px;
     max-width: 95vw;
-  }
-
-  .royal-envelope {
-    height: 300px;
-  }
-
-  .envelope-names {
-    font-size: 2.4rem;
-  }
-
-  .envelope-open .inner-wedding-card {
-    transform: translateY(-60px) scale(1.02);
-  }
-}
-
-@media (max-width: 480px) {
-  .countdown-digit {
-    font-size: 1.45rem;
-  }
-
-  .countdown-digit-box-rose {
-    min-width: 58px;
-    padding: 8px 4px;
-    border-radius: 12px;
-  }
-
-  .countdown-label {
-    font-size: 0.62rem;
-    letter-spacing: 1px;
   }
 
   .btn-rose-gold,
   .btn-outline-rose-gold {
-    padding: 10px 20px;
-    font-size: 0.78rem;
-  }
-
-  .envelope-names {
-    font-size: 2.1rem;
+    padding: 10px 18px;
+    font-size: 0.76rem;
   }
 }

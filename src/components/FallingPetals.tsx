@@ -48,35 +48,40 @@ export const FallingPetals: React.FC<FallingPetalsProps> = ({ enabled = true }) 
     };
     window.addEventListener('resize', handleResize);
 
-    // Rose petals palette (soft pink, blush, rose gold, deep crimson petal edges)
+    const isMobile = window.innerWidth < 768;
+
+    // Rose petals palette (blush, soft pink, rose-gold, gentle crimson)
     const petalColors = [
       'rgba(244, 194, 194, ',
       'rgba(248, 200, 220, ',
       'rgba(230, 168, 178, ',
       'rgba(255, 218, 224, ',
-      'rgba(218, 142, 158, '
+      'rgba(226, 149, 120, '
     ];
 
-    const petals: Petal[] = Array.from({ length: 32 }, () => ({
+    // Mobile-optimized count: 14 petals; Desktop: 30 petals
+    const petalCount = isMobile ? 14 : 30;
+    const petals: Petal[] = Array.from({ length: petalCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height - height,
-      size: Math.random() * 12 + 10,
-      speedY: Math.random() * 1.2 + 0.8,
-      speedX: Math.random() * 0.8 - 0.4,
+      size: Math.random() * (isMobile ? 8 : 12) + 8,
+      speedY: Math.random() * 1.0 + 0.6,
+      speedX: Math.random() * 0.6 - 0.3,
       rotation: Math.random() * 360,
-      rotationSpeed: (Math.random() - 0.5) * 1.5,
+      rotationSpeed: (Math.random() - 0.5) * 1.2,
       flip: Math.random() * Math.PI,
-      flipSpeed: Math.random() * 0.03 + 0.01,
+      flipSpeed: Math.random() * 0.02 + 0.01,
       color: petalColors[Math.floor(Math.random() * petalColors.length)],
-      opacity: Math.random() * 0.4 + 0.5
+      opacity: Math.random() * 0.35 + 0.45
     }));
 
-    // Golden sparkles
-    const sparkles: Sparkle[] = Array.from({ length: 25 }, () => ({
+    // Sparkles count: 12 on mobile; 22 on desktop
+    const sparkleCount = isMobile ? 12 : 22;
+    const sparkles: Sparkle[] = Array.from({ length: sparkleCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 2.5 + 1,
-      speedY: Math.random() * 0.5 + 0.2,
+      size: Math.random() * 2 + 0.8,
+      speedY: Math.random() * 0.4 + 0.15,
       opacity: Math.random(),
       opacitySpeed: (Math.random() * 0.02 + 0.01) * (Math.random() > 0.5 ? 1 : -1)
     }));
@@ -84,7 +89,7 @@ export const FallingPetals: React.FC<FallingPetalsProps> = ({ enabled = true }) 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw Golden Sparkles
+      // Draw Sparkles
       sparkles.forEach((s) => {
         s.y += s.speedY;
         s.opacity += s.opacitySpeed;
@@ -99,9 +104,9 @@ export const FallingPetals: React.FC<FallingPetalsProps> = ({ enabled = true }) 
         ctx.save();
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(212, 175, 55, ${Math.max(0, s.opacity)})`;
-        ctx.shadowColor = '#ffe27d';
-        ctx.shadowBlur = 6;
+        ctx.fillStyle = `rgba(226, 149, 120, ${Math.max(0, s.opacity)})`;
+        ctx.shadowColor = '#fceae3';
+        ctx.shadowBlur = 4;
         ctx.fill();
         ctx.restore();
       });
@@ -109,7 +114,7 @@ export const FallingPetals: React.FC<FallingPetalsProps> = ({ enabled = true }) 
       // Draw Petals
       petals.forEach((p) => {
         p.y += p.speedY;
-        p.x += p.speedX + Math.sin(p.y * 0.008) * 0.5;
+        p.x += p.speedX + Math.sin(p.y * 0.008) * 0.4;
         p.rotation += p.rotationSpeed;
         p.flip += p.flipSpeed;
 
@@ -125,15 +130,14 @@ export const FallingPetals: React.FC<FallingPetalsProps> = ({ enabled = true }) 
         ctx.rotate((p.rotation * Math.PI) / 180);
         ctx.scale(1, Math.cos(p.flip));
 
-        // Draw organic petal shape
         ctx.beginPath();
         ctx.moveTo(0, 0);
         ctx.bezierCurveTo(p.size * 0.5, -p.size * 0.5, p.size, -p.size * 0.2, p.size * 0.8, p.size * 0.6);
         ctx.bezierCurveTo(p.size * 0.5, p.size * 0.9, 0, p.size, 0, 0);
 
         ctx.fillStyle = `${p.color}${p.opacity})`;
-        ctx.shadowColor = 'rgba(230, 160, 170, 0.4)';
-        ctx.shadowBlur = 4;
+        ctx.shadowColor = 'rgba(230, 160, 170, 0.3)';
+        ctx.shadowBlur = 3;
         ctx.fill();
 
         ctx.restore();
