@@ -34,9 +34,9 @@ export const App: React.FC = () => {
         />
 
         {/* Interactive Scratch Card Section */}
-        <section id="scratch" className="py-3 py-md-4">
+        <section id="scratch" className="py-4 py-md-5">
           <div className="container px-3">
-            <div className="glass-card-rose p-2 p-sm-3 p-md-5 reveal-on-scroll">
+            <div className="glass-card-rose p-3 p-md-5 reveal-on-scroll">
               <ScratchCard />
             </div>
           </div>

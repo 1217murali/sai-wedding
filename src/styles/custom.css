@@ -232,33 +232,13 @@ body {
   transform: translateY(0);
 }
 
-/* Hero Section Layout (Clean, balanced spacing on all devices) */
-.hero-section {
-  position: relative;
-  text-align: center;
-  padding-top: 1.5rem;
-  padding-bottom: 1.25rem;
-  width: 100%;
-}
-
-@media (min-width: 992px) {
-  .hero-section {
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-  }
-}
-
 /* Scratch Box & Heart Scratch Card */
 .heart-scratch-wrapper {
   position: relative;
-  width: min(88vw, 340px);
-  height: min(84vw, 320px);
+  width: min(92vw, 370px);
+  height: min(88vw, 350px);
   margin: 0 auto;
-  filter: drop-shadow(0 12px 24px rgba(226, 149, 120, 0.35));
+  filter: drop-shadow(0 14px 28px rgba(226, 149, 120, 0.35));
 }
 
 .heart-scratch-box {
@@ -301,7 +281,7 @@ body {
   justify-content: center;
   align-items: center;
   background: radial-gradient(circle at 50% 40%, #ffffff 0%, #fff4f0 70%, #fde8e1 100%);
-  padding: 45px 22px 38px 22px;
+  padding: 55px 32px 48px 32px;
   text-align: center;
 }
 
@@ -728,35 +708,5 @@ body {
   .btn-outline-rose-gold {
     padding: 10px 18px;
     font-size: 0.76rem;
-  }
-}
-
-/* Mobile Device Spacing Refinements */
-@media (max-width: 767.98px) {
-  .hero-section {
-    padding-top: 1.25rem;
-    padding-bottom: 0.75rem;
-  }
-  
-  .glass-card-rose {
-    padding: 1.25rem 0.85rem !important;
-    border-radius: 16px;
-  }
-  
-  .ornate-divider {
-    margin: 10px auto;
-  }
-  
-  .countdown-digit-box-rose {
-    padding: 8px 3px;
-    border-radius: 10px;
-  }
-  
-  .countdown-digit {
-    font-size: 1.35rem;
-  }
-
-  .countdown-label {
-    font-size: 0.62rem;
   }
 }

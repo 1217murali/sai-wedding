@@ -8,7 +8,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = () => {
   return (
-    <section className="hero-section position-relative text-center pt-3 pt-md-4 pb-2 pb-md-4">
+    <section className="hero-section min-vh-100 d-flex align-items-center justify-content-center position-relative text-center pt-3 pt-md-4 pb-4">
       {/* Background radial glow */}
       <div
         className="position-absolute top-50 start-50 translate-middle w-75 h-75 rounded-circle pointer-events-none"
