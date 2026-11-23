@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import confetti from 'canvas-confetti';
-import { Calendar, RotateCcw, CheckCircle, Clock, MapPin, Heart } from 'lucide-react';
+import { RotateCcw } from 'lucide-react';
 import { weddingAudio } from '../utils/audio';
 
 interface ScratchCardProps {

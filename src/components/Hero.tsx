@@ -1,15 +1,12 @@
 import React from 'react';
-import { Calendar, MapPin, Sparkles, ChevronDown, Clock } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface HeroProps {
-  onScrollToScratch: () => void;
-  onScrollToVenue: () => void;
+  onScrollToScratch?: () => void;
+  onScrollToVenue?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({
-  onScrollToScratch,
-  onScrollToVenue
-}) => {
+export const Hero: React.FC<HeroProps> = () => {
   return (
     <section className="hero-section min-vh-100 d-flex align-items-center justify-content-center position-relative text-center pt-3 pt-md-4 pb-4">
       {/* Background radial glow */}
