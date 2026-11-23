@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import confetti from 'canvas-confetti';
-import { Sparkles, Calendar, RotateCcw, CheckCircle, Clock, MapPin, Heart } from 'lucide-react';
+import { Calendar, RotateCcw, CheckCircle, Clock, MapPin, Heart } from 'lucide-react';
 import { weddingAudio } from '../utils/audio';
 
 interface ScratchCardProps {
@@ -21,9 +21,8 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
     if (isMobile) {
-      // Light, delicate, centralized sprinkle for mobile (NOT heavy from both sides!)
       confetti({
-        particleCount: 22,
+        particleCount: 24,
         spread: 45,
         origin: { y: 0.58 },
         scalar: 0.8,
@@ -32,7 +31,6 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
         disableForReducedMotion: true
       });
     } else {
-      // Refined desktop burst
       confetti({
         particleCount: 45,
         spread: 60,
@@ -48,7 +46,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
     }
   }, [onRevealed]);
 
-  // Draw the luxury Rose-Gold foil cover on canvas
+  // Draw the luxury Rose-Gold foil cover on canvas (clean: NO scratch here or swipe text!)
   const drawCover = useCallback(() => {
     const canvas = canvasRef.current;
     const container = containerRef.current;
@@ -56,14 +54,14 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const width = container.clientWidth || 340;
-    const height = container.clientHeight || 220;
+    const width = container.clientWidth || 350;
+    const height = container.clientHeight || 330;
 
     // Reset transform & clear
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Apply Retina scale
+    // Retina scale
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     ctx.scale(dpr, dpr);
 
@@ -71,53 +69,36 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
 
     // Rich Rose Gold foil gradient
     const grad = ctx.createLinearGradient(0, 0, width, height);
-    grad.addColorStop(0, '#e0a996');
-    grad.addColorStop(0.25, '#fceae3');
-    grad.addColorStop(0.5, '#c48b79');
-    grad.addColorStop(0.75, '#fae5de');
-    grad.addColorStop(1, '#a86c5c');
+    grad.addColorStop(0, '#e8aba0');
+    grad.addColorStop(0.2, '#fdebe4');
+    grad.addColorStop(0.45, '#c98a7a');
+    grad.addColorStop(0.7, '#f8d9ce');
+    grad.addColorStop(1, '#a85f50');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, width, height);
 
-    // Subtle metallic stardust particles
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.55)';
-    const particleCount = width < 400 ? 50 : 80;
+    // Shimmering stardust metallic specks
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+    const particleCount = width < 400 ? 55 : 85;
     for (let i = 0; i < particleCount; i++) {
       const rx = Math.random() * width;
       const ry = Math.random() * height;
-      const r = Math.random() * 1.8 + 0.5;
+      const r = Math.random() * 1.8 + 0.4;
       ctx.beginPath();
       ctx.arc(rx, ry, r, 0, Math.PI * 2);
       ctx.fill();
     }
 
-    // Outer filigree border
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.75)';
-    ctx.lineWidth = 2;
-    ctx.strokeRect(10, 10, width - 20, height - 20);
-
-    ctx.strokeStyle = '#6b3c31';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 4]);
-    ctx.strokeRect(15, 15, width - 30, height - 30);
-    ctx.setLineDash([]);
-
-    // Text & icon on Rose Gold foil
-    ctx.fillStyle = '#4a251e';
-    const titleSize = width < 380 ? '17px' : '20px';
-    ctx.font = `bold ${titleSize} "Playfair Display", Georgia, serif`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('✨ SCRATCH HERE ✨', width / 2, height / 2 - 25);
-
-    const subSize = width < 380 ? '11px' : '13px';
-    ctx.font = `500 ${subSize} "Montserrat", sans-serif`;
-    ctx.fillStyle = '#6e382e';
-    ctx.fillText('Swipe finger or drag cursor to reveal date', width / 2, height / 2 + 7);
-
-    ctx.font = '15px "Cinzel Decorative", serif';
-    ctx.fillStyle = '#4a251e';
-    ctx.fillText('🌹  S & S  🌹', width / 2, height / 2 + 37);
+    // Subtle soft floral sparkles (no text)
+    ctx.fillStyle = 'rgba(255, 240, 235, 0.35)';
+    for (let i = 0; i < 18; i++) {
+      const sx = (width * 0.2) + Math.random() * (width * 0.6);
+      const sy = (height * 0.2) + Math.random() * (height * 0.55);
+      const size = Math.random() * 8 + 4;
+      ctx.beginPath();
+      ctx.arc(sx, sy, size, 0, Math.PI * 2);
+      ctx.fill();
+    }
   }, []);
 
   // Initialize canvas with Retina DPI scaling
@@ -126,8 +107,8 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    const width = container.clientWidth || 340;
-    const height = container.clientHeight || 220;
+    const width = container.clientWidth || 350;
+    const height = container.clientHeight || 330;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     canvas.width = Math.floor(width * dpr);
@@ -154,8 +135,14 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
     const imgData = ctx.getImageData(0, 0, width, height);
     const data = imgData.data;
 
-    for (let y = 0; y < height; y += step) {
-      for (let x = 0; x < width; x += step) {
+    // Sample primarily around the center area of the heart
+    const startY = Math.floor(height * 0.15);
+    const endY = Math.floor(height * 0.85);
+    const startX = Math.floor(width * 0.15);
+    const endX = Math.floor(width * 0.85);
+
+    for (let y = startY; y < endY; y += step) {
+      for (let x = startX; x < endX; x += step) {
         totalSamples++;
         const alphaIndex = (y * width + x) * 4 + 3;
         if (data[alphaIndex] < 60) {
@@ -164,16 +151,18 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
       }
     }
 
-    const pct = Math.round((transparentCount / totalSamples) * 100);
+    if (totalSamples > 0) {
+      const pct = Math.round((transparentCount / totalSamples) * 100);
 
-    if (pct >= 38 && !isScratched) {
-      setIsScratched(true);
-      canvas.style.transition = 'opacity 0.6s ease';
-      canvas.style.opacity = '0';
-      setTimeout(() => {
-        if (canvas) canvas.style.display = 'none';
-      }, 620);
-      fireCelebration();
+      if (pct >= 32 && !isScratched) {
+        setIsScratched(true);
+        canvas.style.transition = 'opacity 0.6s ease';
+        canvas.style.opacity = '0';
+        setTimeout(() => {
+          if (canvas) canvas.style.display = 'none';
+        }, 620);
+        fireCelebration();
+      }
     }
   }, [isScratched, fireCelebration]);
 
@@ -189,7 +178,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
 
     ctx.globalCompositeOperation = 'destination-out';
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    ctx.lineWidth = isMobile ? 38 : 46;
+    ctx.lineWidth = isMobile ? 42 : 50;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
 
@@ -200,7 +189,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
       ctx.stroke();
     } else {
       ctx.beginPath();
-      ctx.arc(x, y, isMobile ? 19 : 23, 0, Math.PI * 2);
+      ctx.arc(x, y, isMobile ? 21 : 25, 0, Math.PI * 2);
       ctx.fill();
     }
 
@@ -261,105 +250,94 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({ onRevealed }) => {
     }
   };
 
-  const handleInstantReveal = () => {
-    if (isScratched) return;
-    setIsScratched(true);
-    const canvas = canvasRef.current;
-    if (canvas) {
-      canvas.style.transition = 'opacity 0.5s ease';
-      canvas.style.opacity = '0';
-      setTimeout(() => {
-        if (canvas) canvas.style.display = 'none';
-      }, 550);
-    }
-    fireCelebration();
-  };
-
   return (
     <div className="text-center py-2 py-md-3">
-      {/* Clean Header without badge */}
-      <h2 className="font-playfair fs-2 mb-2">Scratch To Reveal The Date</h2>
-      <p className="text-muted small mx-auto mb-3 mb-md-4 px-2" style={{ maxWidth: '440px' }}>
-        Swipe your finger or move your cursor over the card to reveal our sacred wedding date and muhurtham.
-      </p>
+      {/* SVG ClipPath Definition for Heart Shape */}
+      <svg width="0" height="0" className="position-absolute" aria-hidden="true" style={{ pointerEvents: 'none' }}>
+        <defs>
+          <clipPath id="heartClip" clipPathUnits="objectBoundingBox">
+            <path d="M 0.5, 0.25 C 0.5, 0.12, 0.38, 0.02, 0.25, 0.02 C 0.11, 0.02, 0, 0.13, 0, 0.32 C 0, 0.54, 0.24, 0.74, 0.5, 0.98 C 0.76, 0.74, 1, 0.54, 1, 0.32 C 1, 0.13, 0.89, 0.02, 0.75, 0.02 C 0.62, 0.02, 0.5, 0.12, 0.5, 0.25 Z" />
+          </clipPath>
+          <linearGradient id="roseGoldBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#e29578" />
+            <stop offset="40%" stopColor="#f7d6cb" />
+            <stop offset="70%" stopColor="#b85042" />
+            <stop offset="100%" stopColor="#e29578" />
+          </linearGradient>
+        </defs>
+      </svg>
 
-      {/* Scratch Box */}
-      <div
-        ref={containerRef}
-        className={`scratch-box position-relative mx-auto ${isScratched ? 'pulse-glow-rose' : ''}`}
-      >
-        {/* Revealed Underlay */}
-        <div className="scratch-underlay">
-          <div className="text-center w-100 px-2 px-sm-3">
-            <span className="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1 rounded-pill mb-2 fw-semibold" style={{ fontSize: '0.72rem' }}>
-              <Heart size={11} fill="#e63946" className="me-1 inline-block" /> The Auspicious Union
-            </span>
-            <div className="font-script rose-gold-text mb-0" style={{ fontSize: 'clamp(2rem, 7vw, 2.5rem)', lineHeight: 1.1 }}>
-              Save Our Date
-            </div>
-            <div
-              className="font-cinzel text-dark fw-bold my-1"
-              style={{ fontSize: 'clamp(1.4rem, 5vw, 1.95rem)', letterSpacing: '0.5px' }}
-            >
-              13th December 2026
-            </div>
-            <div className="text-muted small fw-semibold d-flex flex-wrap align-items-center justify-content-center gap-1 gap-sm-2 mb-1" style={{ fontSize: '0.78rem' }}>
-              <span className="d-inline-flex align-items-center gap-1">
-                <Calendar size={13} className="text-rose-gold" />
-                <span>Sunday</span>
-              </span>
-              <span>•</span>
-              <span className="d-inline-flex align-items-center gap-1">
-                <Clock size={13} className="text-rose-gold" />
-                <span>Muhurtham: Night 8:15 PM</span>
-              </span>
-            </div>
-            <div className="text-secondary small d-flex align-items-center justify-content-center gap-1" style={{ fontSize: '0.74rem' }}>
-              <MapPin size={12} className="text-danger flex-shrink-0" />
-              <span>GNR Convention Hall, Kadiam, Andhra Pradesh</span>
+      {/* Clean Header */}
+      <h2 className="font-playfair fs-2 mb-3">Scratch To Reveal The Date</h2>
+
+      {/* Heart-Shaped Scratch Card */}
+      <div className="heart-scratch-wrapper">
+        <div
+          ref={containerRef}
+          className={`heart-scratch-box position-relative ${isScratched ? 'pulse-glow-rose' : ''}`}
+        >
+          {/* Revealed Underlay inside Heart */}
+          <div className="heart-scratch-underlay">
+            <div className="text-center w-100 px-2">
+
+              <div
+                className="font-script rose-gold-text mb-0"
+                style={{ fontSize: 'clamp(1.7rem, 6vw, 2.2rem)', lineHeight: 1.15 }}
+              >
+                Save Our Date
+              </div>
+
+              <div
+                className="font-cinzel text-dark fw-bold my-1"
+                style={{ fontSize: 'clamp(1.2rem, 4.5vw, 1.65rem)', letterSpacing: '0.5px' }}
+              >
+                13th December 2026
+              </div>
             </div>
           </div>
+
+          {/* Scratchable Canvas inside Heart */}
+          <canvas
+            ref={canvasRef}
+            className="heart-scratch-canvas"
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          />
         </div>
 
-        {/* Scratchable Canvas */}
-        <canvas
-          ref={canvasRef}
-          className="scratch-canvas"
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        />
+        {/* Heart Border Silhouette SVG Overlay */}
+        <svg
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          className="heart-border-svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M 50, 25 C 50, 12, 38, 2, 25, 2 C 11, 2, 2, 13, 2, 32 C 2, 53, 24, 73, 50, 97 C 76, 73, 98, 53, 98, 32 C 98, 13, 89, 2, 75, 2 C 62, 2, 50, 12, 50, 25 Z"
+            fill="none"
+            stroke="url(#roseGoldBorderGrad)"
+            strokeWidth="2.5"
+          />
+        </svg>
       </div>
 
-      {/* Clean Controls (No progress percentage) */}
-      <div className="d-flex flex-wrap align-items-center justify-content-center gap-2 gap-sm-3 mt-3 mt-md-4">
-        {!isScratched ? (
+      {/* Controls: Quick Reveal button REMOVED. Only post-reveal state shows */}
+      {isScratched && (
+        <div className="d-flex flex-wrap gap-2 justify-content-center align-items-center mt-3 mt-md-4">
           <button
-            onClick={handleInstantReveal}
-            className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1"
-            style={{ fontSize: '0.78rem' }}
+            onClick={handleReset}
+            className="btn btn-sm btn-outline-rose-gold rounded-pill px-3 py-1 d-inline-flex align-items-center gap-1"
+            style={{ fontSize: '0.75rem' }}
           >
-            <Sparkles size={12} className="me-1 text-warning" /> Quick Reveal
+            <RotateCcw size={12} /> Scratch Again
           </button>
-        ) : (
-          <div className="d-flex flex-wrap gap-2 justify-content-center align-items-center">
-            <span className="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 rounded-pill d-inline-flex align-items-center gap-1" style={{ fontSize: '0.75rem' }}>
-              <CheckCircle size={13} /> Date Revealed!
-            </span>
-            <button
-              onClick={handleReset}
-              className="btn btn-sm btn-outline-rose-gold rounded-pill px-3 py-1 d-inline-flex align-items-center gap-1"
-              style={{ fontSize: '0.75rem' }}
-            >
-              <RotateCcw size={12} /> Scratch Again
-            </button>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

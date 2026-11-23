@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { GrandCardReveal } from './components/GrandCardReveal';
+import React from 'react';
 import { FallingPetals } from './components/FallingPetals';
 import { Hero } from './components/Hero';
 import { ScratchCard } from './components/ScratchCard';
@@ -11,9 +10,6 @@ import { Footer } from './components/Footer';
 import { useScrollReveal } from './utils/useScrollReveal';
 
 export const App: React.FC = () => {
-  // Show grand opening card reveal on first visit
-  const [showGrandCard, setShowGrandCard] = useState(true);
-
   // Initialize smooth scroll-triggered reveal animations
   useScrollReveal();
 
@@ -26,11 +22,6 @@ export const App: React.FC = () => {
 
   return (
     <div className="wedding-app min-vh-100 position-relative">
-      {/* Full-Screen Royal Wedding Card Opening Reveal */}
-      {showGrandCard && (
-        <GrandCardReveal onOpenComplete={() => setShowGrandCard(false)} />
-      )}
-
       {/* Floating Rose Petals Canvas */}
       <FallingPetals enabled={true} />
 
@@ -40,7 +31,6 @@ export const App: React.FC = () => {
         <Hero
           onScrollToScratch={() => scrollToSection('scratch')}
           onScrollToVenue={() => scrollToSection('venue')}
-          onReplayCard={() => setShowGrandCard(true)}
         />
 
         {/* Interactive Scratch Card Section */}

@@ -117,7 +117,7 @@ export const CountdownTimer: React.FC = () => {
               <div className="d-inline-flex flex-wrap align-items-center justify-content-center gap-2 text-muted small bg-white bg-opacity-80 px-3 py-2 rounded-pill mt-2 border border-rose-gold shadow-sm" style={{ fontSize: '0.78rem' }}>
                 <BellRing size={13} className="text-rose-gold" />
                 <span>
-                  Sumuhurtham: <strong>Sunday, 13th December 2026 • Night 8:15 PM</strong>
+                  Sumuhurtham: <strong>Sunday, 13th December 2026 • Night 8:22 PM</strong>
                 </span>
               </div>
             </div>
