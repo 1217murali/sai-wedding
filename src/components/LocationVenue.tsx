@@ -14,8 +14,20 @@ export const LocationVenue: React.FC = () => {
             <span className="ornate-icon">❦</span>
             <span className="ornate-line"></span>
           </div>
-          <p className="text-muted mx-auto px-2" style={{ maxWidth: '580px', fontSize: '0.9rem' }}>
+          <p className="text-muted mx-auto px-2 mb-2" style={{ maxWidth: '580px', fontSize: '0.9rem' }}>
             We warmly invite you to witness our wedding vows amidst the fragrant nursery gardens and regal pavilions of <strong>Kadiam, Andhra Pradesh</strong>.
+          </p>
+          <p
+            className="text-muted mx-auto px-2"
+            style={{
+              fontFamily: "'Noto Sans Telugu', 'Gautami', 'Telugu Sangam MN', sans-serif",
+              maxWidth: '600px',
+              fontSize: '0.88rem',
+              lineHeight: 1.6,
+              color: '#6b5550'
+            }}
+          >
+            సుగంధభరిత నర్సరీ వనాలు మరియు సుందర ప్రాంగణాల నడుమ వెలసిన ఆంధ్రప్రదేశ్ లోని <strong>కడియం</strong>లో, మా వివాహ బంధాన్ని ప్రత్యక్షంగా తిలకించి ఆశీర్వదించవలసిందిగా మిమ్ములను సాదరంగా ఆహ్వానిస్తున్నాము.
           </p>
         </div>
 

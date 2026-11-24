@@ -114,11 +114,22 @@ export const CountdownTimer: React.FC = () => {
               </div>
 
               {/* Footer auspicious badge */}
-              <div className="d-inline-flex flex-wrap align-items-center justify-content-center gap-2 text-muted small bg-white bg-opacity-80 px-3 py-2 rounded-pill mt-2 border border-rose-gold shadow-sm" style={{ fontSize: '0.78rem' }}>
-                <BellRing size={13} className="text-rose-gold" />
-                <span>
-                  Sumuhurtham: <strong>Sunday, 13th December 2026 • Night 8:22 PM</strong>
-                </span>
+              <div className="d-inline-flex flex-column align-items-center justify-content-center gap-1 text-muted small bg-white bg-opacity-80 px-3 py-2 rounded-4 mt-2 border border-rose-gold shadow-sm" style={{ fontSize: '0.78rem' }}>
+                <div className="d-inline-flex align-items-center gap-2">
+                  <BellRing size={13} className="text-rose-gold" />
+                  <span>
+                    Sumuhurtham: <strong>Sunday, 13th December 2026 • Night 8:22 PM</strong>
+                  </span>
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'Noto Sans Telugu', 'Gautami', 'Telugu Sangam MN', sans-serif",
+                    fontSize: '0.8rem',
+                    color: '#6b5550'
+                  }}
+                >
+                  సుముహూర్తం: <strong>ఆదివారం, 13 డిసెంబర్ 2026 • రాత్రి 8:22 గం॥లకు</strong>
+                </div>
               </div>
             </div>
           </div>

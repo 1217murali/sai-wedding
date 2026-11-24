@@ -8,8 +8,21 @@ export const CoupleSpotlight: React.FC = () => {
         <div className="text-center mb-4 mb-md-5 reveal-on-scroll">
           <div className="badge-rose mb-2 d-inline-flex align-items-center gap-2">
             <Heart size={13} fill="#E29578" /> The Blessed Couple <Heart size={13} fill="#E29578" />
-          </div>
-          <h2 className="font-playfair display-5 mb-2">Sai &amp; Saraswathi</h2>
+          </div><br/>
+          <h2
+            className="fw-bold mb-2"
+            style={{
+              fontFamily: "'Noto Sans Telugu', 'Gautami', 'Telugu Sangam MN', sans-serif",
+              fontSize: 'clamp(2rem, 5.5vw, 3rem)',
+              color: '#5c1825',
+              background: 'linear-gradient(135deg, #6b1928 0%, #b85042 35%, #6b1928 75%, #943243 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              display: 'inline-block'
+            }}
+          >
+            సాయి &amp; సరస్వతి
+          </h2>
           <div className="ornate-divider">
             <span className="ornate-line"></span>
             <span className="ornate-icon">❦</span>
