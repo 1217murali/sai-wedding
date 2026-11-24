@@ -36,7 +36,7 @@ export const LocationVenue: React.FC = () => {
                       Wedding Sanctuary
                     </span>
                     <h3 className="font-playfair fs-4 mb-0 mt-1">
-                      GNR Convention Hall Mini
+                      GNR Convention Hall Villa
                     </h3>
                   </div>
                 </div>
@@ -46,7 +46,7 @@ export const LocationVenue: React.FC = () => {
                     Full Address
                   </p>
                   <p className="mb-0 text-dark fw-medium" style={{ lineHeight: '1.6', fontSize: '0.92rem' }}>
-                    GNR Convention Hall Mini,<br />
+                    GNR Convention Hall Villa,<br />
                     Veeravaram Rd, Kadiam,<br />
                     Andhra Pradesh - 533126
                   </p>

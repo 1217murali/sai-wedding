@@ -36,7 +36,7 @@ export const CoupleSpotlight: React.FC = () => {
                   style={{ objectFit: 'cover', objectPosition: 'center top' }}
                 />
               </div>
-              <span className="badge-rose">The Groom</span>
+              <span className="badge-rose">The Groom (పెళ్ళికొడుకు)</span>
               <h3 className="font-playfair fs-3 mt-2 mb-1">Sai</h3>
               <p className="text-secondary small fst-italic px-2 mb-0" style={{ fontSize: '0.84rem' }}>
                 &quot;With every heartbeat, I promise to walk beside you in joy, respect, and devotion.&quot;
@@ -69,7 +69,7 @@ export const CoupleSpotlight: React.FC = () => {
                   style={{ objectFit: 'cover', objectPosition: 'center top' }}
                 />
               </div>
-              <span className="badge-rose">The Bride</span>
+              <span className="badge-rose">The Bride (పెళ్ళికూతురు)</span>
               <h3 className="font-playfair fs-3 mt-2 mb-1">Saraswathi</h3>
               <p className="text-secondary small fst-italic px-2 mb-0" style={{ fontSize: '0.84rem' }}>
                 &quot;In your smile, I see my home and my forever. Here is to our blessed journey together.&quot;

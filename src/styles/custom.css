@@ -17,12 +17,12 @@
 
 /* Viewport Utilities */
 .min-vh-80 {
-  min-height: 80vh !important;
+  min-height: 100vh !important;
 }
 
 @media (min-width: 992px) {
   .min-vh-lg-100 {
-    min-height: 100vh !important;
+    min-height: 110vh !important;
   }
 }
 

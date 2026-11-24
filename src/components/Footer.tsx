@@ -41,8 +41,20 @@ export const Footer: React.FC = () => {
         <p className="font-cinzel small text-rose-gold fw-semibold mb-1" style={{ fontSize: '0.8rem' }}>13 • DECEMBER • 2026</p>
         <p className="text-muted small fw-medium mb-3" style={{ fontSize: '0.8rem' }}>Kadiam, Andhra Pradesh, India</p>
 
-        <p className="text-muted small mx-auto mb-3 mb-md-4 px-2" style={{ maxWidth: '460px', fontSize: '0.82rem' }}>
+        <p className="text-muted small mx-auto mb-2 px-2" style={{ maxWidth: '460px', fontSize: '0.82rem' }}>
           With joyful hearts and the blessings of our elders, our families eagerly look forward to welcoming you to shower your gracious blessings upon Sai &amp; Saraswathi.
+        </p>
+        <p
+          className="text-muted mx-auto mb-3 mb-md-4 px-2"
+          style={{
+            fontFamily: "'Noto Sans Telugu', 'Gautami', 'Telugu Sangam MN', sans-serif",
+            maxWidth: '520px',
+            fontSize: '0.82rem',
+            lineHeight: 1.6,
+            color: '#6b5550'
+          }}
+        >
+          పెద్దల ఆశీస్సులతో, సంతోషభరిత హృదయాలతో... సాయి &amp; సరస్వతిలను నిండు మనసుతో ఆశీర్వదించడానికి విచ్చేయవలసిందిగా మా కుటుంబ సభ్యులు సాదరంగా ఆహ్వానిస్తున్నారు.
         </p>
 
         <div className="d-flex flex-wrap justify-content-center gap-2 gap-sm-3 mb-3 mb-md-4">

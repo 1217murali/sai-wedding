@@ -115,7 +115,19 @@ export const Hero: React.FC<HeroProps> = () => {
               className="font-cormorant fs-4 text-muted fst-italic mx-auto my-3 px-2 reveal-on-scroll"
               style={{ maxWidth: '580px', lineHeight: 1.5, fontSize: 'clamp(1.15rem, 3.5vw, 1.45rem)' }}
             >
-              &quot;Two lives, two hearts, joined together in friendship, united forever in love. With the blessings of our parents and elders, we invite you to celebrate our wedding union.&quot;
+              &quot;Two families united by destiny, two souls brought together by tradition, beginning a sacred lifelong journey of companionship. With the blessings of our parents and elders, we cordially invite you to celebrate our wedding union.&quot;
+            </p>
+            <p
+              className="text-muted mx-auto mb-3 px-2 reveal-on-scroll"
+              style={{
+                fontFamily: "'Noto Sans Telugu', 'Gautami', 'Telugu Sangam MN', sans-serif",
+                maxWidth: '560px',
+                lineHeight: 1.6,
+                fontSize: 'clamp(0.88rem, 2.5vw, 1.05rem)',
+                color: '#6b5550'
+              }}
+            >
+              &quot;పెద్దల నిశ్చయంతో, దైవ సంకల్పంతో... రెండు కుటుంబాలు ఒక్కటై, నూతన జీవిత ప్రయాణాన్ని ప్రారంభిస్తున్న శుభవేళ... తల్లిదండ్రులు మరియు పెద్దల ఆశీస్సులతో జరుగనున్న మా వివాహ మహోత్సవానికి మిమ్ములను సాదరంగా ఆహ్వానిస్తున్నాము.&quot;
             </p>
           </div>
         </div>
