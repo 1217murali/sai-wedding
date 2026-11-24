@@ -17,7 +17,7 @@
 
 /* Viewport Utilities */
 .min-vh-80 {
-  min-height: 100vh !important;
+  min-height: 90vh !important;
 }
 
 @media (min-width: 992px) {
