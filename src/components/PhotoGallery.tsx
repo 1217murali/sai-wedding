@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { Camera, X, ChevronLeft, ChevronRight, Eye } from 'lucide-react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Camera, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { GalleryPhoto } from '../types';
 
 export const PhotoGallery: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<'all' | 'prewedding' | 'candid' | 'moments'>('all');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
+  const touchStartX = useRef<number | null>(null);
 
   const photos: GalleryPhoto[] = [
     {
@@ -17,25 +19,25 @@ export const PhotoGallery: React.FC = () => {
       id: 2,
       url: '/images/traditional.jpg',
       title: 'Traditional Grace & Elegance',
-      category: 'prewedding'
+      category: 'moments'
     },
     {
       id: 3,
       url: '/images/trade.jpg',
       title: 'Cherished Traditional Moments',
-      category: 'candid'
+      category: 'moments'
     },
     {
       id: 4,
       url: '/images/back pose.jpg',
       title: 'Walking Hand in Hand into Forever',
-      category: 'candid'
+      category: 'moments'
     },
     {
       id: 5,
       url: '/images/groom.jpg',
       title: 'Sai - The Groom',
-      category: 'prewedding'
+      category: 'moments'
     },
     {
       id: 6,
@@ -45,36 +47,85 @@ export const PhotoGallery: React.FC = () => {
     }
   ];
 
-  const filteredPhotos = photos.filter(
-    (p) => activeCategory === 'all' || p.category === activeCategory
-  );
+  const total = photos.length;
 
-  const handleOpenLightbox = (index: number) => {
-    setSelectedPhotoIndex(index);
+  const nextPhoto = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % total);
+  }, [total]);
+
+  const prevPhoto = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + total) % total);
+  }, [total]);
+
+  // Automatic circular rotation timer (increased speed)
+  useEffect(() => {
+    if (isPaused || selectedPhotoIndex !== null) return;
+    const interval = setInterval(() => {
+      nextPhoto();
+    }, 1500);
+
+    return () => clearInterval(interval);
+  }, [isPaused, selectedPhotoIndex, nextPhoto]);
+
+  // Touch swipe handling
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsPaused(true);
+    touchStartX.current = e.touches[0].clientX;
   };
 
-  const handleCloseLightbox = () => {
-    setSelectedPhotoIndex(null);
-  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    setIsPaused(false);
+    if (touchStartX.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diffX = touchStartX.current - touchEndX;
 
-  const handlePrev = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedPhotoIndex !== null) {
-      setSelectedPhotoIndex((selectedPhotoIndex - 1 + filteredPhotos.length) % filteredPhotos.length);
+    if (diffX > 45) {
+      nextPhoto();
+    } else if (diffX < -45) {
+      prevPhoto();
     }
+    touchStartX.current = null;
   };
 
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedPhotoIndex !== null) {
-      setSelectedPhotoIndex((selectedPhotoIndex + 1) % filteredPhotos.length);
+  // Compute 3D circular transformation for each card
+  const getCardStyle = (index: number) => {
+    let diff = (index - currentIndex) % total;
+    if (diff < -Math.floor(total / 2)) diff += total;
+    if (diff > Math.floor((total - 1) / 2)) diff -= total;
+
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 576;
+    const xStep = isMobile ? 95 : 185;
+    const zStep = isMobile ? 75 : 115;
+    const rotStep = isMobile ? 24 : 30;
+
+    const translateX = diff * xStep;
+    const translateZ = -Math.abs(diff) * zStep;
+    const rotateY = -diff * rotStep;
+    const scale = Math.max(0.66, 1 - Math.abs(diff) * (isMobile ? 0.16 : 0.13));
+    const opacity = Math.abs(diff) === 0 ? 1 : Math.max(0.28, 0.85 - Math.abs(diff) * 0.28);
+    const zIndex = 20 - Math.abs(diff);
+
+    return {
+      transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
+      opacity,
+      zIndex,
+      filter: Math.abs(diff) === 0 ? 'none' : 'brightness(0.92)'
+    };
+  };
+
+  const handleCardClick = (index: number) => {
+    if (index === currentIndex) {
+      setSelectedPhotoIndex(index);
+    } else {
+      setCurrentIndex(index);
     }
   };
 
   return (
-    <section id="gallery" className="py-4 py-md-5 position-relative">
+    <section id="gallery" className="py-4 py-md-5 position-relative overflow-hidden">
       <div className="container px-3">
-        <div className="text-center mb-4 mb-md-5 reveal-on-scroll">
+        {/* Section Heading */}
+        <div className="text-center mb-3 mb-md-4 reveal-on-scroll">
           <div className="badge-rose mb-2 d-inline-flex align-items-center gap-2">
             <Camera size={13} /> Cherished Frames <Camera size={13} />
           </div>
@@ -84,69 +135,50 @@ export const PhotoGallery: React.FC = () => {
             <span className="ornate-icon">❦</span>
             <span className="ornate-line"></span>
           </div>
-          <p className="text-muted mx-auto px-2" style={{ maxWidth: '540px', fontSize: '0.9rem' }}>
+          <p className="text-muted mx-auto px-2 mb-1" style={{ maxWidth: '540px', fontSize: '0.9rem' }}>
             A glimpse into the shared smiles, quiet glances, and cherished moments of Sai &amp; Saraswathi.
           </p>
-
-          {/* Category Tabs */}
-          <div className="d-flex flex-wrap justify-content-center gap-1 gap-sm-2 my-3">
-            {(['all', 'prewedding', 'candid', 'moments'] as const).map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`btn btn-sm rounded-pill px-3 py-1 fw-semibold text-capitalize ${
-                  activeCategory === cat ? 'btn-rose-gold' : 'btn-outline-rose-gold'
-                }`}
-                style={{ fontSize: '0.78rem' }}
-              >
-                {cat === 'all' ? 'All Photos' : cat}
-              </button>
-            ))}
-          </div>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="row g-3 g-md-4 justify-content-center">
-          {filteredPhotos.map((photo, idx) => (
-            <div key={photo.id} className="col-12 col-sm-6 col-lg-4 reveal-on-scroll">
+        {/* 3D Circular Rotating Carousel Stage */}
+        <div
+          className="circular-gallery-stage"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {photos.map((photo, index) => {
+            const isActive = index === currentIndex;
+            const style = getCardStyle(index);
+
+            return (
               <div
-                onClick={() => handleOpenLightbox(idx)}
-                className="ornate-img-frame-rose cursor-pointer position-relative overflow-hidden group shadow-sm"
-                style={{ cursor: 'pointer', height: '290px' }}
+                key={photo.id}
+                onClick={() => handleCardClick(index)}
+                className={`circular-gallery-card ornate-img-frame-rose ${isActive ? 'is-active' : ''}`}
+                style={style}
               >
-                <img
-                  src={photo.url}
-                  alt={photo.title}
-                  className="w-100 h-100 rounded-3 transition-transform"
-                  style={{
-                    objectFit: 'cover',
-                    objectPosition: 'center top',
-                    transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                />
-                {/* Overlay Caption on Hover */}
-                <div
-                  className="position-absolute bottom-0 start-0 end-0 p-3 text-white d-flex align-items-center justify-content-between"
-                  style={{
-                    background: 'linear-gradient(to top, rgba(30,12,15,0.85), transparent)',
-                    borderBottomLeftRadius: '16px',
-                    borderBottomRightRadius: '16px'
-                  }}
-                >
-                  <span className="small fw-semibold">{photo.title}</span>
-                  <Eye size={16} className="text-rose-gold" />
+                <div className="w-100 h-100 position-relative rounded-4 overflow-hidden shadow-sm">
+                  <img
+                    src={photo.url}
+                    alt={photo.title}
+                    className="w-100 h-100"
+                    style={{
+                      objectFit: 'cover',
+                      objectPosition: 'center top'
+                    }}
+                  />
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Fullscreen Lightbox Modal */}
         {selectedPhotoIndex !== null && (
           <div
-            onClick={handleCloseLightbox}
+            onClick={() => setSelectedPhotoIndex(null)}
             className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center p-3"
             style={{
               backgroundColor: 'rgba(20, 8, 10, 0.95)',
@@ -156,7 +188,7 @@ export const PhotoGallery: React.FC = () => {
           >
             {/* Close button */}
             <button
-              onClick={handleCloseLightbox}
+              onClick={() => setSelectedPhotoIndex(null)}
               className="btn btn-link text-white position-absolute top-0 end-0 m-3 m-md-4 p-2 text-decoration-none"
               aria-label="Close Lightbox"
             >
@@ -165,7 +197,10 @@ export const PhotoGallery: React.FC = () => {
 
             {/* Navigation buttons */}
             <button
-              onClick={handlePrev}
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedPhotoIndex((selectedPhotoIndex - 1 + total) % total);
+              }}
               className="btn btn-rose-gold rounded-circle p-2 position-absolute start-0 ms-2 ms-md-3 shadow-lg"
               aria-label="Previous photo"
             >
@@ -173,7 +208,10 @@ export const PhotoGallery: React.FC = () => {
             </button>
 
             <button
-              onClick={handleNext}
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedPhotoIndex((selectedPhotoIndex + 1) % total);
+              }}
               className="btn btn-rose-gold rounded-circle p-2 position-absolute end-0 me-2 me-md-3 shadow-lg"
               aria-label="Next photo"
             >
@@ -187,15 +225,15 @@ export const PhotoGallery: React.FC = () => {
               style={{ maxWidth: '92vw', maxHeight: '88vh' }}
             >
               <img
-                src={filteredPhotos[selectedPhotoIndex].url}
-                alt={filteredPhotos[selectedPhotoIndex].title}
+                src={photos[selectedPhotoIndex].url}
+                alt={photos[selectedPhotoIndex].title}
                 className="img-fluid rounded-4 shadow-2xl border border-rose-gold"
                 style={{ maxHeight: '75vh', objectFit: 'contain' }}
               />
               <div className="text-white mt-3 font-playfair fs-5">
-                {filteredPhotos[selectedPhotoIndex].title}
+                {photos[selectedPhotoIndex].title}
                 <div className="text-rose-gold small font-sans mt-1">
-                  Photo {selectedPhotoIndex + 1} of {filteredPhotos.length}
+                  Photo {selectedPhotoIndex + 1} of {total}
                 </div>
               </div>
             </div>
