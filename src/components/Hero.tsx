@@ -102,7 +102,7 @@ export const Hero: React.FC<HeroProps> = () => {
                 style={{ width: '110px', height: '110px', overflow: 'hidden' }}
               >
                 <img
-                  src="/images/marriage.jpg"
+                  src="/images/home.avif"
                   alt="Sai & Saraswathi"
                   className="w-100 h-100"
                   style={{ objectFit: 'cover', objectPosition: 'center 20%' }}

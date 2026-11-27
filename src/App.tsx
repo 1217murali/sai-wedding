@@ -36,8 +36,12 @@ export const App: React.FC = () => {
         {/* Interactive Scratch Card Section */}
         <section id="scratch" className="py-4 py-md-5">
           <div className="container px-3">
-            <div className="glass-card-rose p-3 p-md-5 reveal-on-scroll">
-              <ScratchCard />
+            <div className="row justify-content-center">
+              <div className="col-12 col-lg-11 col-xl-10">
+                <div className="glass-card-rose p-3 p-md-5 reveal-on-scroll">
+                  <ScratchCard />
+                </div>
+              </div>
             </div>
           </div>
         </section>

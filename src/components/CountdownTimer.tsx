@@ -54,8 +54,8 @@ export const CountdownTimer: React.FC = () => {
     <section id="countdown" className="countdown-section py-4 py-md-5 position-relative">
       <div className="container px-3">
         <div className="row justify-content-center">
-          <div className="col-12 col-md-11 col-lg-9 col-xl-8">
-            <div className="glass-card-rose p-3 p-sm-4 p-md-5 text-center position-relative reveal-on-scroll">
+          <div className="col-12 col-lg-11 col-xl-10">
+            <div className="glass-card-rose p-4 p-sm-5 text-center position-relative reveal-on-scroll">
               {/* Ornate corner accents */}
               <div
                 className="position-absolute top-0 start-0 m-2 m-sm-3 text-rose-gold opacity-50"
@@ -113,22 +113,36 @@ export const CountdownTimer: React.FC = () => {
                 </div>
               </div>
 
-              {/* Footer auspicious badge */}
-              <div className="d-inline-flex flex-column align-items-center justify-content-center gap-1 text-muted small bg-white bg-opacity-80 px-3 py-2 rounded-4 mt-2 border border-rose-gold shadow-sm" style={{ fontSize: '0.78rem' }}>
-                <div className="d-inline-flex align-items-center gap-2">
-                  <BellRing size={13} className="text-rose-gold" />
-                  <span>
-                    Sumuhurtham: <strong>Sunday, 13th December 2026 • Night 8:22 PM</strong>
-                  </span>
-                </div>
+              {/* Auspicious Muhurtham section with image */}
+              <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3 mt-3">
                 <div
-                  style={{
-                    fontFamily: "'Noto Sans Telugu', 'Gautami', 'Telugu Sangam MN', sans-serif",
-                    fontSize: '0.8rem',
-                    color: '#6b5550'
-                  }}
+                  className="p-1 border border-2 border-rose-gold rounded-3 shadow-sm bg-white flex-shrink-0"
+                  style={{ width: '135px', height: '135px', overflow: 'hidden' }}
                 >
-                  సుముహూర్తం: <strong>ఆదివారం, 13 డిసెంబర్ 2026 • రాత్రి 8:22 గం॥లకు</strong>
+                  <img
+                    src="/images/marriage.jpg"
+                    alt="Marriage Muhurtham"
+                    className="w-100 h-100 rounded-2"
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+
+                <div className="d-inline-flex flex-column align-items-center align-items-sm-start justify-content-center gap-1 bg-white bg-opacity-80 px-3 px-sm-4 py-2 py-sm-3 rounded-4 border border-rose-gold shadow-sm text-center text-sm-start">
+                  <div className="d-inline-flex align-items-center gap-2" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.15rem)', color: '#4a3b32' }}>
+                    <BellRing size={18} className="text-rose-gold flex-shrink-0" />
+                    <span>
+                      Sumuhurtham: <strong style={{ color: '#5c1825', fontSize: 'clamp(1rem, 2.8vw, 1.25rem)' }}>Sunday, 13th December 2026 • Night 8:22 PM</strong>
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: "'Noto Sans Telugu', 'Gautami', 'Telugu Sangam MN', sans-serif",
+                      fontSize: 'clamp(0.95rem, 2.5vw, 1.15rem)',
+                      color: '#6b5550'
+                    }}
+                  >
+                    సుముహూర్తం: <strong style={{ color: '#5c1825', fontSize: 'clamp(1rem, 2.8vw, 1.22rem)' }}>ఆదివారం, 13 డిసెంబర్ 2026 • రాత్రి 8:22 గం॥లకు</strong>
+                  </div>
                 </div>
               </div>
             </div>

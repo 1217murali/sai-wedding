@@ -10,18 +10,6 @@ export const PhotoGallery: React.FC = () => {
 
   const photos: GalleryPhoto[] = [
     {
-      id: 1,
-      url: '/images/marriage.jpg',
-      title: 'Together in Eternal Love',
-      category: 'moments'
-    },
-    {
-      id: 2,
-      url: '/images/traditional.jpg',
-      title: 'Traditional Grace & Elegance',
-      category: 'moments'
-    },
-    {
       id: 3,
       url: '/images/trade.jpg',
       title: 'Cherished Traditional Moments',
@@ -35,14 +23,14 @@ export const PhotoGallery: React.FC = () => {
     },
     {
       id: 5,
-      url: '/images/groom.jpg',
-      title: 'Sai - The Groom',
+      url: '/images/VDR.jpg',
+      title: 'VDR Moments',
       category: 'moments'
     },
     {
       id: 6,
-      url: '/images/bride.jpg',
-      title: 'Saraswathi - The Bride',
+      url: '/images/images-photoroom.png',
+      title: 'Precious Moments',
       category: 'moments'
     }
   ];

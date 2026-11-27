@@ -43,15 +43,14 @@ export const CoupleSpotlight: React.FC = () => {
                 style={{ maxWidth: '250px', height: '290px' }}
               >
                 <img
-                  src="/images/groom.jpg"
+                  src="/images/Groom_Sai.jpeg"
                   alt="Sai - The Groom"
                   className="w-100 h-100 rounded-4"
                   style={{ objectFit: 'cover', objectPosition: 'center top' }}
                 />
               </div>
-              <span className="badge-rose">The Groom (పెళ్ళికొడుకు)</span>
-              <h3 className="font-playfair fs-3 mt-2 mb-1">Sai</h3>
-              <p className="text-secondary small fst-italic px-2 mb-0" style={{ fontSize: '0.84rem' }}>
+              <span className="badge-rose mb-2">The Groom (పెళ్ళికొడుకు)</span>
+              <p className="text-secondary small fst-italic px-2 mb-0 mt-2" style={{ fontSize: '0.84rem' }}>
                 &quot;With every heartbeat, I promise to walk beside you in joy, respect, and devotion.&quot;
               </p>
             </div>
@@ -65,7 +64,7 @@ export const CoupleSpotlight: React.FC = () => {
             >
               <Heart size={30} fill="#E29578" className="text-rose-gold" />
             </div>
-            <div className="font-script fs-2 rose-gold-text mt-2">&amp;</div>
+            
           </div>
 
           {/* Bride: Saraswathi */}
@@ -76,15 +75,14 @@ export const CoupleSpotlight: React.FC = () => {
                 style={{ maxWidth: '250px', height: '290px' }}
               >
                 <img
-                  src="/images/bride.jpg"
+                  src="/images/Bride_Saraswathi.jpeg"
                   alt="Saraswathi - The Bride"
                   className="w-100 h-100 rounded-4"
                   style={{ objectFit: 'cover', objectPosition: 'center top' }}
                 />
               </div>
-              <span className="badge-rose">The Bride (పెళ్ళికూతురు)</span>
-              <h3 className="font-playfair fs-3 mt-2 mb-1">Saraswathi</h3>
-              <p className="text-secondary small fst-italic px-2 mb-0" style={{ fontSize: '0.84rem' }}>
+              <span className="badge-rose mb-2">The Bride (పెళ్ళికూతురు)</span>
+              <p className="text-secondary small fst-italic px-2 mb-0 mt-2" style={{ fontSize: '0.84rem' }}>
                 &quot;In your smile, I see my home and my forever. Here is to our blessed journey together.&quot;
               </p>
             </div>
